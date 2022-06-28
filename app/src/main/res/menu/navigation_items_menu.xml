@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/icons_round_home_24"
+        android:title="Home" />
+
+    <group
+        android:id="@+id/categoriesList"
+        android:menuCategory="container">
+
+        <item
+            android:id="@+id/categories"
+            android:icon="@drawable/icons_round_category_24"
+            android:title="Categories" />
+
+        <item
+            android:id="@+id/action"
+            android:title="Action" />
+
+        <item
+            android:id="@+id/adventure"
+            android:title="Adventure" />
+
+        <item
+            android:id="@+id/comedy"
+            android:title="Comedy" />
+
+        <item
+            android:id="@+id/drama"
+            android:title="Drama" />
+
+        <item
+            android:id="@+id/familyLife"
+            android:title="Family Life" />
+
+        <item
+            android:id="@+id/fantasy"
+            android:title="Fantasy" />
+
+        <item
+            android:id="@+id/gods"
+            android:title="Gods" />
+
+        <item
+            android:id="@+id/harem"
+            android:title="Harem" />
+
+        <item
+            android:id="@+id/martialArts"
+            android:title="Martial Arts" />
+
+        <item
+            android:id="@+id/magic"
+            android:title="Magic" />
+
+        <item
+            android:id="@+id/ninja"
+            android:title="Ninja" />
+
+        <item
+            android:id="@+id/school"
+            android:title="School" />
+
+        <item
+            android:id="@+id/sci_fi"
+            android:title="Sci-fi" />
+
+        <item
+            android:id="@+id/shounen"
+            android:title="Shounen" />
+
+        <item
+            android:id="@+id/superPower"
+            android:title="Super Power" />
+
+        <item
+            android:id="@+id/suspense"
+            android:title="Suspense" />
+
+        <item
+            android:id="@+id/thriller"
+            android:title="Thriller" />
+
+        <item
+            android:id="@+id/tragedy"
+            android:title="Tragedy" />
+
+        <item
+            android:id="@+id/vigilante"
+            android:title="Vigilantes" />
+
+    </group>
+
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/icons_round_settings_24"
+        android:title="Settings" />
+</menu>
