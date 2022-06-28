@@ -8,166 +8,193 @@
     android:nestedScrollingEnabled="false"
     tools:context=".ui.AnimeInfoActivity">
 
-    <TableLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="1">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/animeImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginVertical="10dp"
-            android:contentDescription="Anime Picture"
-            android:src="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
+        <LinearLayout
+            android:id="@+id/animeImageLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/image_background_stroke"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/animeImage"
+                android:layout_width="200dp"
+                android:layout_height="250dp"
+                android:layout_margin="6dp"
+                android:background="@color/black" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/animeScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="Score\n"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/animeImageLayout"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/animeRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="Rating\n"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/animeImageLayout"
+            app:layout_constraintTop_toBottomOf="@id/animeScore" />
+
+        <TextView
+            android:id="@+id/airingDates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:text="Airing Dates\n"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/animeImageLayout"
+            app:layout_constraintTop_toBottomOf="@id/animeRating" />
 
         <TextView
             android:id="@+id/animeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Anime Name"
-            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:text="Anime Title"
+            android:textSize="28sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/animeImage"
-            app:layout_constraintTop_toBottomOf="@id/animeImage" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/animeImageLayout" />
+
+        <LinearLayout
+            android:id="@+id/tagsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:foreground="@drawable/text_background_stroke"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="5dp"
+            app:layout_constraintTop_toBottomOf="@id/animeTitle">
+
+            <TextView
+                android:id="@+id/animeType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="animeType" />
+
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:id="@+id/animeStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="animeStatus" />
+
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:id="@+id/animeEpisodes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="animeEps" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/animeEpisodes"
+            android:id="@+id/animeTags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
             android:layout_marginTop="15dp"
-            android:text="Episodes: "
-            android:textSize="22sp"
+            android:gravity="center_horizontal"
+            android:text="Action    Arcade   Thriller"
+            android:textAlignment="center"
+            android:textColor="?colorPrimary"
+            android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/animeTitle"
-            app:layout_constraintTop_toBottomOf="@id/animeTitle" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tagsLayout" />
 
         <TextView
-            android:id="@+id/animeType"
-            android:layout_width="wrap_content"
+            android:id="@+id/description"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="5dp"
-            android:text="Type: "
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingHorizontal="5dp"
+            android:text="Anime Description"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/animeEpisodes"
-            app:layout_constraintTop_toBottomOf="@id/animeEpisodes" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/animeTags" />
 
         <TextView
-            android:id="@+id/animeStatus"
-            android:layout_width="wrap_content"
+            android:id="@+id/sources"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="5dp"
-            android:text="Status: "
-            android:textSize="22sp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/text_background_stroke"
+            android:text="Sources"
+            android:textAlignment="center"
+            android:textSize="28sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/animeType"
-            app:layout_constraintTop_toBottomOf="@id/animeType" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description" />
 
         <TextView
-            android:id="@+id/animeSeason"
+            android:id="@+id/animeSources"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="10dp"
+            android:text="Sources links"
+            android:textAlignment="center"
+            android:textColor="?colorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sources" />
+
+        <ProgressBar
+            android:id="@+id/animeProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="5dp"
-            android:text="Anime Season: "
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:indeterminateTint="?colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/animeStatus"
-            app:layout_constraintTop_toBottomOf="@id/animeStatus" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TableRow android:layout_marginTop="15dp">
-
-            <TextView
-                android:id="@+id/animeTags"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Tags:"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/animeSeason"
-                app:layout_constraintTop_toBottomOf="@id/animeSeason" />
-
-            <TextView
-                android:id="@+id/tags"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingTop="2dp"
-                android:text="Tags"
-                android:textColor="?colorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-
-        <TableRow android:layout_marginTop="15dp">
-
-            <TextView
-                android:id="@+id/animeSources"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Sources:"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/animeTags"
-                app:layout_constraintTop_toBottomOf="@id/animeTags" />
-
-            <TextView
-                android:id="@+id/sources"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingTop="3dp"
-                android:text="Sources"
-                android:textColor="?colorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-
-        <TableRow android:layout_marginTop="15dp">
-
-            <TextView
-                android:id="@+id/animeRelations"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:text="Relations: "
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@id/animeSources"
-                app:layout_constraintTop_toBottomOf="@id/animeSources" />
-
-            <TextView
-                android:id="@+id/relations"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingTop="3dp"
-                android:text="Relations"
-                android:textColor="?colorPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-    </TableLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -40,6 +40,21 @@ data class Anime(
 
     @SerializedName("type")
     val type: String? = null,
+
+    @SerializedName("score")
+    val score: String? = null,
+
+    @SerializedName("shortDescription")
+    val description: String? = null,
+
+    @SerializedName("rating")
+    val rating: String? = null,
+
+    @SerializedName("startDate")
+    val startDate: String? = null,
+
+    @SerializedName("endDate")
+    val endDate: String? = null,
 ) : Serializable
 
 /*
