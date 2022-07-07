@@ -31,4 +31,10 @@ object AnimeInterface {
 
         return malScraperResponse.body()
     }
+
+    suspend fun addToWatchList(requestAnime: Anime): Anime? {
+        val watchlistResponse = retrofitAnimeInterface.addToWatchList(requestAnime)
+
+        return watchlistResponse.body()
+    }
 }

@@ -7,6 +7,7 @@
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/drawable/card_view_background.xml" value="0.144" />
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/drawable/ic_background.xml" value="0.108" />
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/drawable/icons_round_search_24.xml" value="0.144" />
+        <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/drawable/icons_round_settings_24.xml" value="0.159" />
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/drawable/image_backgrond_stroke.xml" value="0.159" />
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/drawable/text_background_stroke.xml" value="0.159" />
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/layout/activity_anime_info.xml" value="0.22447916666666667" />
@@ -15,6 +16,7 @@
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/layout/activity_main_screen.xml" value="0.22447916666666667" />
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/layout/activity_search_results.xml" value="0.22447916666666667" />
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/layout/activity_splash_screen.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/layout/activity_watch_list.xml" value="0.22447916666666667" />
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/layout/anime_info_textview.xml" value="0.22447916666666667" />
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/layout/anime_item.xml" value="0.2234375" />
         <entry key="..\:/AndroidStudioProjects/AnimeWorld/app/src/main/res/layout/anime_sources_item.xml" value="0.2234375" />

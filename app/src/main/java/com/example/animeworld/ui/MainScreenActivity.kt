@@ -27,7 +27,7 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     private lateinit var viewModel: AnimeViewModel
     private var searchAnimeLiveData: LiveData<Anime> = MutableLiveData()
 
-    private var currentPage = 5
+    private var currentPage = 100
 
 //    private val expandableListViewItems: List<String> = listOf("action, arcade, drama, romance, school, fantasy")
 
@@ -141,7 +141,7 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                     startActivity(i)
                 } else {
                     Toast.makeText(this@MainScreenActivity,
-                        "Search filed cannot be empty",
+                        "Search field cannot be empty",
                         Toast.LENGTH_SHORT).show()
                 }
 
@@ -155,8 +155,24 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val intent = Intent(this@MainScreenActivity, CategorizedAnimeActivity::class.java)
-        intent.putExtra("categoryName", item.title.toString())
+//        if(item.title.contentEquals("Watch list", true)){
+//            val intent = Intent(this@MainScreenActivity, WatchListActivity::class.java)
+//            startActivity(intent)
+//        }
+//        else {
+//            val intent = Intent(this@MainScreenActivity, CategorizedAnimeActivity::class.java)
+//            intent.putExtra("categoryName", item.title.toString())
+//            startActivity(intent)
+//        }
+
+        val intent: Intent = if (item.title.contentEquals("Watch List", true)) {
+            Intent(this@MainScreenActivity, WatchListActivity::class.java)
+        } else {
+            Intent(this@MainScreenActivity, CategorizedAnimeActivity::class.java).apply {
+                putExtra("categoryName", item.title.toString())
+            }
+        }
+
         startActivity(intent)
 
         return true

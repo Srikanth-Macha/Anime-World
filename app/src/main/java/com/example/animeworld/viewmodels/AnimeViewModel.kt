@@ -71,4 +71,18 @@ class AnimeViewModel : ViewModel() {
 
         return malScraperLiveData
     }
+
+    fun addAnimeToWatchList(requestAnime: Anime): LiveData<Anime> {
+        val watchListLiveData = MutableLiveData<Anime>()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val watchListData = animeInterface.addToWatchList(requestAnime)
+
+            withContext(Dispatchers.Main) {
+                watchListLiveData.value = watchListData
+            }
+        }
+
+        return watchListLiveData
+    }
 }

@@ -14,6 +14,8 @@ import com.example.animeworld.viewmodels.AnimeViewModel
 class CategorizedAnimeActivity : AppCompatActivity() {
     lateinit var binding: ActivityCategorizedAnimeBinding
 
+    // TODO add-load next page feature
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCategorizedAnimeBinding.inflate(layoutInflater)

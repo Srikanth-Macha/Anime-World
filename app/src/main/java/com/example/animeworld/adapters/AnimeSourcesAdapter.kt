@@ -24,10 +24,7 @@ class AnimeSourcesAdapter(
     }
 
     override fun onBindViewHolder(holder: SourcesViewHolder, position: Int) {
-        holder.animeSourceItem.apply {
-            text = sources[position]
-            setTextColor(Color.parseColor("#EC5222"))
-        }
+        holder.animeSourceItem.text = sources[position]
         holder.onItemClick(context)
     }
 
@@ -43,7 +40,7 @@ class SourcesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val sourceItem = clickedItem as TextView
 
             val sourceItemText = sourceItem.text
-            sourceItem.setBackgroundColor(Color.parseColor("#FF2196F3"))
+            sourceItem.setBackgroundColor(Color.parseColor("#00428A"))
 
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(sourceItemText.toString())

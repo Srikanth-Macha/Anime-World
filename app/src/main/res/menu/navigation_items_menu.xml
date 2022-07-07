@@ -94,7 +94,7 @@
 
 
     <item
-        android:id="@+id/settings"
-        android:icon="@drawable/icons_round_settings_24"
-        android:title="Settings" />
+        android:id="@+id/watchList"
+        android:icon="@drawable/ic_round_control_point_24"
+        android:title="Watch List" />
 </menu>

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,18 +31,15 @@ class AnimeInfoActivity : AppCompatActivity() {
         val malScraperLiveData = viewModel.getDataFromMalScraper(anime.title.toString())
 
         malScraperLiveData.observe(this) { animeResponse ->
-            binding.apply {
-                animeScore.text = animeScore.text.toString() + animeResponse.score
-                animeRating.text = animeRating.text.toString() + animeResponse.rating
-                airingDates.text =
-                    airingDates.text.toString() + animeResponse.startDate + " to " + animeResponse.endDate
-                description.text = animeResponse.description
-
-                anime.sources?.let { setSourcesRecyclerView(it) }
-
-                animeProgressBar.visibility = View.GONE
-                enableBackgroundInteraction()
+            anime.apply {
+                score = animeResponse.score
+                rating = animeResponse.rating
+                startDate = animeResponse.startDate
+                endDate = animeResponse.endDate
+                description = animeResponse.description
             }
+
+            updateAnimeDetails(animeResponse, anime)
         }
 
         binding.apply {
@@ -64,6 +62,27 @@ class AnimeInfoActivity : AppCompatActivity() {
         }
 
         Glide.with(this).load(anime.picture).into(binding.animeImage)
+
+        binding.addAnimeButton.setOnClickListener {
+            viewModel.addAnimeToWatchList(anime)
+
+            Toast.makeText(this, "Adding to the Watchlist . . .", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun updateAnimeDetails(animeResponse: Anime, anime: Anime) {
+        binding.apply {
+            animeScore.text = animeScore.text.toString() + animeResponse.score
+            animeRating.text = animeRating.text.toString() + animeResponse.rating
+            airingDates.text =
+                airingDates.text.toString() + animeResponse.startDate + " to " + animeResponse.endDate
+            description.text = animeResponse.description
+
+            anime.sources?.let { setSourcesRecyclerView(it) }
+
+            animeProgressBar.visibility = View.GONE
+            enableBackgroundInteraction()
+        }
     }
 
     private fun disableBackgroundInteraction() {

@@ -2,7 +2,9 @@ package com.example.animeworld.retrofit
 
 import com.example.animeworld.models.Anime
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface RetrofitAnimeInterface {
@@ -17,4 +19,7 @@ interface RetrofitAnimeInterface {
 
     @GET("/getFromMalScraper")
     suspend fun getFromMalScraper(@Query("anime_name") animeName: String): Response<Anime>
+
+    @POST("/addToWatchList")
+    suspend fun addToWatchList(@Body requestAnime: Anime): Response<Anime>
 }
