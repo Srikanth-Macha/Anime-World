@@ -22,4 +22,7 @@ interface RetrofitAnimeInterface {
 
     @POST("/addToWatchList")
     suspend fun addToWatchList(@Body requestAnime: Anime): Response<Anime>
+
+    @GET("/getWatchListData")
+    suspend fun getWatchList(): Response<List<Anime>>
 }

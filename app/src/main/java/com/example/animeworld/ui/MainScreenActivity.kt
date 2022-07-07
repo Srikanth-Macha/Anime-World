@@ -27,9 +27,7 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     private lateinit var viewModel: AnimeViewModel
     private var searchAnimeLiveData: LiveData<Anime> = MutableLiveData()
 
-    private var currentPage = 100
-
-//    private val expandableListViewItems: List<String> = listOf("action, arcade, drama, romance, school, fantasy")
+    private var currentPage = 7
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

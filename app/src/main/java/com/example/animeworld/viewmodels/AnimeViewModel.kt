@@ -73,16 +73,31 @@ class AnimeViewModel : ViewModel() {
     }
 
     fun addAnimeToWatchList(requestAnime: Anime): LiveData<Anime> {
-        val watchListLiveData = MutableLiveData<Anime>()
+        val postAnimeLiveData = MutableLiveData<Anime>()
 
         viewModelScope.launch(Dispatchers.IO) {
             val watchListData = animeInterface.addToWatchList(requestAnime)
 
             withContext(Dispatchers.Main) {
-                watchListLiveData.value = watchListData
+                postAnimeLiveData.value = watchListData
+            }
+        }
+
+        return postAnimeLiveData
+    }
+
+    fun getWatchList(): LiveData<List<Anime>> {
+        val watchListLiveData = MutableLiveData<List<Anime>>()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val watchList = animeInterface.getWatchList()
+
+            withContext(Dispatchers.Main) {
+                watchListLiveData.value = watchList
             }
         }
 
         return watchListLiveData
     }
+
 }

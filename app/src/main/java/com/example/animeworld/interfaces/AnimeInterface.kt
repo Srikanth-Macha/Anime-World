@@ -33,8 +33,14 @@ object AnimeInterface {
     }
 
     suspend fun addToWatchList(requestAnime: Anime): Anime? {
-        val watchlistResponse = retrofitAnimeInterface.addToWatchList(requestAnime)
+        val postAnimeResponse = retrofitAnimeInterface.addToWatchList(requestAnime)
 
-        return watchlistResponse.body()
+        return postAnimeResponse.body()
+    }
+
+    suspend fun getWatchList(): List<Anime>? {
+        val watchListResponse = retrofitAnimeInterface.getWatchList()
+
+        return watchListResponse.body()
     }
 }
