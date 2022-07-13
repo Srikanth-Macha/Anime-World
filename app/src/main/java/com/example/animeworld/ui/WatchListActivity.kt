@@ -1,6 +1,7 @@
 package com.example.animeworld.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -24,7 +25,6 @@ class WatchListActivity : AppCompatActivity() {
         watchListLiveData.observe(this) { watchList ->
             setRecyclerView(watchList)
         }
-
     }
 
     private fun setRecyclerView(watchList: List<Anime>?) {
@@ -43,5 +43,7 @@ class WatchListActivity : AppCompatActivity() {
             this.adapter = adapter
             this.layoutManager = layoutManager
         }
+
+        binding.progressBar.visibility = View.GONE
     }
 }
