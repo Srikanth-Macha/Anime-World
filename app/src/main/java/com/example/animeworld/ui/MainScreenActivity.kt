@@ -153,17 +153,16 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//        if(item.title.contentEquals("Watch list", true)){
-//            val intent = Intent(this@MainScreenActivity, WatchListActivity::class.java)
-//            startActivity(intent)
-//        }
-//        else {
-//            val intent = Intent(this@MainScreenActivity, CategorizedAnimeActivity::class.java)
-//            intent.putExtra("categoryName", item.title.toString())
-//            startActivity(intent)
-//        }
 
-        val intent: Intent = if (item.title.contentEquals("Watch List", true)) {
+        val itemName = item.title.toString().lowercase()
+
+        if (itemName == "home" || itemName == "categories") {
+            item.isCheckable = false
+
+            return false
+        }
+
+        val intent: Intent = if (itemName.contentEquals("Watch List", true)) {
             Intent(this@MainScreenActivity, WatchListActivity::class.java)
         } else {
             Intent(this@MainScreenActivity, CategorizedAnimeActivity::class.java).apply {

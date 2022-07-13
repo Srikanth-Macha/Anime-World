@@ -13,6 +13,10 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
+        moveToNextScreen()
+    }
+
+    private fun moveToNextScreen() {
         actionBar?.hide()
         supportActionBar?.hide()
 
@@ -20,6 +24,5 @@ class SplashScreen : AppCompatActivity() {
             startActivity(Intent(this, MainScreenActivity::class.java))
             finish()
         }, 1000)
-
     }
 }
