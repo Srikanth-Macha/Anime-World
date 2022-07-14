@@ -14,7 +14,7 @@ import com.example.animeworld.viewmodels.AnimeViewModel
 class CategorizedAnimeActivity : AppCompatActivity() {
     lateinit var binding: ActivityCategorizedAnimeBinding
 
-    // TODO add-load next page feature
+    private var currentPage: Number = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,21 +25,39 @@ class CategorizedAnimeActivity : AppCompatActivity() {
         Toast.makeText(this, "$categoryName Anime", Toast.LENGTH_SHORT).show()
 
         val viewModel: AnimeViewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
-        val categorizedAnimeLiveData = viewModel.getCategorizedAnime(categoryName.toString())
+        val categorizedAnimeLiveData =
+            viewModel.getCategorizedAnime(categoryName.toString(), currentPage)
 
         categorizedAnimeLiveData.observe(this) { categorizedAnimeList ->
-            setUpRecyclerView(categorizedAnimeList)
+            setUpRecyclerView(viewModel,
+                categorizedAnimeList as MutableList<Anime>?,
+                categoryName.toString())
         }
-
     }
 
-    private fun setUpRecyclerView(categorizedAnimeList: List<Anime>?) {
+    private fun setUpRecyclerView(
+        viewModel: AnimeViewModel,
+        categorizedAnimeList: MutableList<Anime>?,
+        categoryName: String,
+    ) {
         val gridLayoutManager = GridLayoutManager(this, 2)
         val adapter = object : AnimeAdapter(categorizedAnimeList,
             this@CategorizedAnimeActivity,
             gridLayoutManager,
             this@CategorizedAnimeActivity) {
-            override fun loadNextPage(page: Int) {}
+
+            override fun loadNextPage(page: Int) {
+                binding.categoriesProgressBar.visibility = View.VISIBLE
+                val categorizedAnimeLiveData = viewModel.getCategorizedAnime(categoryName, page)
+
+                categorizedAnimeLiveData.observe(this@CategorizedAnimeActivity) { newAnimeList ->
+                    categorizedAnimeList?.addAll(newAnimeList)
+                    notifyDataSetChanged()
+
+                    binding.categoriesProgressBar.visibility = View.GONE
+                }
+
+            }
         }
 
         binding.categoryRecyclerView.apply {

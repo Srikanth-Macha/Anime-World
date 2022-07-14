@@ -20,8 +20,9 @@ object AnimeInterface {
         return animeSearchResponse.body()
     }
 
-    suspend fun getAnimeByCategory(categoryName: String): List<Anime>? {
-        val categoryAnimeResponse = retrofitAnimeInterface.getAnimeByCategory(categoryName)
+    suspend fun getAnimeByCategory(categoryName: String, pageNumber: Number): List<Anime>? {
+        val categoryAnimeResponse =
+            retrofitAnimeInterface.getAnimeByCategory(categoryName, pageNumber)
 
         return categoryAnimeResponse.body()
     }

@@ -44,11 +44,12 @@ class AnimeViewModel : ViewModel() {
         return animeSearchLiveData
     }
 
-    fun getCategorizedAnime(categoryName: String): LiveData<List<Anime>> {
+    fun getCategorizedAnime(categoryName: String, pageNumber: Number): LiveData<List<Anime>> {
         val categorizedAnimeLiveData = MutableLiveData<List<Anime>>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val categorizedAnimeList = animeInterface.getAnimeByCategory(categoryName.lowercase())
+            val categorizedAnimeList =
+                animeInterface.getAnimeByCategory(categoryName.lowercase(), pageNumber)
 
             withContext(Dispatchers.Main) {
                 categorizedAnimeLiveData.value = categorizedAnimeList

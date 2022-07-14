@@ -186,10 +186,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="20dp"
-            android:foregroundGravity="bottom|right"
             android:backgroundTint="?colorPrimary"
             android:contentDescription="Add Anime to Watchlist"
             android:elevation="20dp"
+            android:foregroundGravity="bottom|right"
             android:src="@drawable/ic_round_add_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

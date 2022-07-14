@@ -15,7 +15,10 @@ interface RetrofitAnimeInterface {
     suspend fun searchAnime(@Query("anime_name") animeName: String): Response<List<Anime>>
 
     @GET("/getAnimeByCategory")
-    suspend fun getAnimeByCategory(@Query("category_name") categoryName: String): Response<List<Anime>>
+    suspend fun getAnimeByCategory(
+        @Query("category_name") categoryName: String,
+        @Query("page_number") pageNumber: Number = 1,
+    ): Response<List<Anime>>
 
     @GET("/getFromMalScraper")
     suspend fun getFromMalScraper(@Query("anime_name") animeName: String): Response<Anime>
