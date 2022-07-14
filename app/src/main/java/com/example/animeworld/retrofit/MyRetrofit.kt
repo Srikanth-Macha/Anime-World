@@ -8,8 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object MyRetrofit {
-    private const val URL = "http://192.168.15.187:3000/"
-    /*"https://anime-backend.cleverapps.io/"*/
+    private const val URL = /*"http://192.168.15.187:3000/"*/
+    "https://anime-backend.cleverapps.io/"
 
     fun getInstance(): Retrofit {
         return Retrofit.Builder()
