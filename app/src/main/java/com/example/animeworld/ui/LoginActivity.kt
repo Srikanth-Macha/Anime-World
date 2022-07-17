@@ -33,13 +33,13 @@ class LoginActivity : AppCompatActivity() {
                     val editor = preferences.edit()
 
                     if(!preferences.contains("Email")) {
-                        editor.putString("Username", username)
-                        editor.putString("Email", email)
-                        editor.putString("Password", password)
+                        editor.apply {
+                            putString("Username", username)
+                            putString("Email", email)
+                            putString("Password", password)
+                            apply()
+                        }
                     }
-
-                    editor.apply()
-
                     Toast.makeText(this, "Successfully logged in as $username", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Password is too short", Toast.LENGTH_SHORT).show()
