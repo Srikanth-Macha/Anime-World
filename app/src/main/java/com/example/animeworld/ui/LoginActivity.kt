@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
                 if (password.length >= 8) {
                     val username = email.substring(0, email.length - 10)
 
-                    val preferences = getPreferences(Context.MODE_PRIVATE)
+                    val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
                     val editor = preferences.edit()
 
                     if(!preferences.contains("Email")) {
@@ -41,6 +41,9 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
                     Toast.makeText(this, "Successfully logged in as $username", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, MainScreenActivity::class.java))
+                    finishAffinity()
+
                 } else {
                     Toast.makeText(this, "Password is too short", Toast.LENGTH_SHORT).show()
                 }

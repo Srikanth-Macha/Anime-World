@@ -3,11 +3,7 @@
 package com.example.animeworld.ui
 
 import android.content.Intent
-import android.content.SharedPreferences
-import android.graphics.Typeface
 import android.os.Bundle
-import android.preference.PreferenceManager
-import android.text.InputType
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -15,7 +11,6 @@ import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -27,7 +22,6 @@ import com.example.animeworld.databinding.ActivityMainScreenBinding
 import com.example.animeworld.models.Anime
 import com.example.animeworld.viewmodels.AnimeViewModel
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.textfield.TextInputEditText
 
 class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainScreenBinding
@@ -56,11 +50,6 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         searchAnimeLiveData.observe(this) { searchedAnime ->
             Log.w("Anime from observe", searchedAnime.toString())
             searchNewAnime(searchedAnime)
-        }
-
-        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        if (!preferences.contains("Username")) {
-            showDialogBox(preferences.edit())
         }
     }
 
@@ -185,32 +174,5 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         startActivity(intent)
 
         return true
-    }
-
-    private fun showDialogBox(preferences: SharedPreferences.Editor) {
-        val builder = AlertDialog.Builder(this)
-
-        val textInput = TextInputEditText(this).apply {
-            inputType = InputType.TYPE_TEXT_VARIATION_PERSON_NAME
-            hint = "Harry..."
-            setTypeface(null, Typeface.BOLD)
-        }
-
-        builder.apply {
-            setTitle("Enter your name")
-            setView(textInput)
-            setPositiveButton("OK") { _, _ ->
-                Toast.makeText(this@MainScreenActivity,
-                    textInput.text.toString(),
-                    Toast.LENGTH_SHORT).show()
-
-                preferences.putString("Username", textInput.text.toString())
-                preferences.commit()
-            }
-            setCancelable(false)
-
-            create()
-            show()
-        }
     }
 }
