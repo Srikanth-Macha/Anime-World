@@ -1,6 +1,7 @@
 package com.example.animeworld.interfaces
 
 import com.example.animeworld.models.Anime
+import com.example.animeworld.models.User
 import com.example.animeworld.retrofit.MyRetrofit
 import com.example.animeworld.retrofit.RetrofitAnimeInterface
 
@@ -39,9 +40,15 @@ object AnimeInterface {
         return postAnimeResponse.body()
     }
 
-    suspend fun getWatchList(): List<Anime>? {
-        val watchListResponse = retrofitAnimeInterface.getWatchList()
+    suspend fun getWatchList(email: String): List<Anime>? {
+        val watchListResponse = retrofitAnimeInterface.getWatchList(email)
 
         return watchListResponse.body()
+    }
+
+    suspend fun loginUser(user: User): User? {
+        val userResponse = retrofitAnimeInterface.loginUser(user)
+
+        return  userResponse.body()
     }
 }

@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.animeworld.databinding.ActivityLoginBinding
+import com.example.animeworld.models.User
+import com.example.animeworld.viewmodels.AnimeViewModel
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -29,21 +32,7 @@ class LoginActivity : AppCompatActivity() {
                 if (password.length >= 8) {
                     val username = email.substring(0, email.length - 10)
 
-                    val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
-                    val editor = preferences.edit()
-
-                    if(!preferences.contains("Email")) {
-                        editor.apply {
-                            putString("Username", username)
-                            putString("Email", email)
-                            putString("Password", password)
-                            apply()
-                        }
-                    }
-                    Toast.makeText(this, "Successfully logged in as $username", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MainScreenActivity::class.java))
-                    finishAffinity()
-
+                    loginUser(User(username, email, password))
                 } else {
                     Toast.makeText(this, "Password is too short", Toast.LENGTH_SHORT).show()
                 }
@@ -53,5 +42,39 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun loginUser(user: User) {
+        val viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
+        val userLiveData = viewModel.loginUser(user)
+
+        userLiveData.observe(this) { searchedUser ->
+            if (searchedUser?.username == null && searchedUser?.email == null) {
+                Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT)
+                    .show()
+
+                return@observe
+            } else {
+                moveToMainScreen(user) // to Login and show main screen
+            }
+        }
+    }
+
+    private fun moveToMainScreen(user: User) {
+        val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
+        val editor = preferences.edit()
+
+        if (!preferences.contains("Email")) {
+            editor.apply {
+                putString("Username", user.username)
+                putString("Email", user.email)
+                putString("Password", user.password)
+                apply()
+            }
+        }
+        Toast.makeText(this, "Successfully logged in as ${user.username}", Toast.LENGTH_SHORT)
+            .show()
+        startActivity(Intent(this, MainScreenActivity::class.java))
+        finishAffinity()
     }
 }

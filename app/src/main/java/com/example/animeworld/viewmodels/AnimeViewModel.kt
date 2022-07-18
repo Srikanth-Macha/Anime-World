@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.animeworld.interfaces.AnimeInterface
 import com.example.animeworld.models.Anime
+import com.example.animeworld.models.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -87,11 +88,11 @@ class AnimeViewModel : ViewModel() {
         return postAnimeLiveData
     }
 
-    fun getWatchList(): LiveData<List<Anime>> {
+    fun getWatchList(email: String?): LiveData<List<Anime>> {
         val watchListLiveData = MutableLiveData<List<Anime>>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val watchList = animeInterface.getWatchList()
+            val watchList = animeInterface.getWatchList(email.toString())
 
             withContext(Dispatchers.Main) {
                 watchListLiveData.value = watchList
@@ -101,4 +102,17 @@ class AnimeViewModel : ViewModel() {
         return watchListLiveData
     }
 
+    fun loginUser(user: User): LiveData<User?> {
+        val userLiveData = MutableLiveData<User>()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val userResponse = animeInterface.loginUser(user)
+
+            withContext(Dispatchers.Main) {
+                userLiveData.value = userResponse
+            }
+        }
+
+        return userLiveData
+    }
 }

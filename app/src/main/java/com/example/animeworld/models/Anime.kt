@@ -55,6 +55,12 @@ data class Anime(
 
     @SerializedName("endDate")
     var endDate: String? = null,
+
+    @SerializedName("email")
+    var email: String? = null,
+
+    @SerializedName("password")
+    var password: String? = null,
 ) : Serializable
 
 /*

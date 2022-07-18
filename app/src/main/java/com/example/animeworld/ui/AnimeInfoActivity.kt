@@ -1,6 +1,7 @@
 package com.example.animeworld.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
@@ -63,7 +64,18 @@ class AnimeInfoActivity : AppCompatActivity() {
 
         Glide.with(this).load(anime.picture).into(binding.animeImage)
 
+        addAnimeToWatchList(viewModel, anime)
+    }
+
+    private fun addAnimeToWatchList(viewModel: AnimeViewModel, anime: Anime) {
         binding.addAnimeButton.setOnClickListener {
+
+            val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
+            anime.apply {
+                email = preferences.getString("Email", null)
+                password = preferences.getString("Password", null)
+            }
+
             viewModel.addAnimeToWatchList(anime)
 
             Toast.makeText(this, "Adding to the Watchlist . . .", Toast.LENGTH_LONG).show()
@@ -94,6 +106,7 @@ class AnimeInfoActivity : AppCompatActivity() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
 
+    // for scrollable list of source links of Anime to watch
     private fun setSourcesRecyclerView(sources: List<String>) {
         binding.animeSourcesRecyclerView.apply {
             adapter = AnimeSourcesAdapter(this@AnimeInfoActivity, sources)

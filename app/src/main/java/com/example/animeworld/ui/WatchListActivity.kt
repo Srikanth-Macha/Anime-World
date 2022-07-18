@@ -1,5 +1,6 @@
 package com.example.animeworld.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,7 @@ import com.example.animeworld.models.Anime
 import com.example.animeworld.viewmodels.AnimeViewModel
 
 class WatchListActivity : AppCompatActivity() {
-    lateinit var binding: ActivityWatchListBinding
+    private lateinit var binding: ActivityWatchListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +21,8 @@ class WatchListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
-        val watchListLiveData = viewModel.getWatchList()
+        val userEmail = getSharedPreferences("User", Context.MODE_PRIVATE).getString("Email", null)
+        val watchListLiveData = viewModel.getWatchList(userEmail)
 
         watchListLiveData.observe(this) { watchList ->
             setRecyclerView(watchList)
