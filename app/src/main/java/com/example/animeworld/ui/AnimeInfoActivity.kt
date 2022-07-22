@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.animeworld.adapters.AnimeSourcesAdapter
 import com.example.animeworld.databinding.ActivityAnimeInfoBinding
 import com.example.animeworld.models.Anime
+import com.example.animeworld.models.User
 import com.example.animeworld.viewmodels.AnimeViewModel
 
 class AnimeInfoActivity : AppCompatActivity() {
@@ -69,12 +70,13 @@ class AnimeInfoActivity : AppCompatActivity() {
 
     private fun addAnimeToWatchList(viewModel: AnimeViewModel, anime: Anime) {
         binding.addAnimeButton.setOnClickListener {
-
             val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
-            anime.apply {
-                email = preferences.getString("Email", null)
-                password = preferences.getString("Password", null)
-            }
+
+            val email = preferences.getString("Email", null)
+            val password = preferences.getString("Password", null)
+            val username = preferences.getString("Username", null)
+
+            anime.user = User(username, email, password)
 
             viewModel.addAnimeToWatchList(anime)
 

@@ -49,6 +49,6 @@ object AnimeInterface {
     suspend fun loginUser(user: User): User? {
         val userResponse = retrofitAnimeInterface.loginUser(user)
 
-        return  userResponse.body()
+        return userResponse.body()
     }
 }
