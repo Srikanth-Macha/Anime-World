@@ -18,8 +18,7 @@ class SearchResultsActivity : AppCompatActivity() {
         binding = ActivitySearchResultsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val queryText = intent.getStringExtra("query text")?.split(" ")
-            ?.joinToString(separator = " ", transform = String::capitalize)
+        val queryText = intent.getStringExtra("query text")
 
         val viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
         val searchAnimeLiveData = viewModel.searchAnime(queryText!!)
