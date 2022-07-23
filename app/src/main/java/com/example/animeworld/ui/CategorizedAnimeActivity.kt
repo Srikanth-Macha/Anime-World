@@ -1,6 +1,7 @@
 package com.example.animeworld.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,9 +30,11 @@ class CategorizedAnimeActivity : AppCompatActivity() {
             viewModel.getCategorizedAnime(categoryName.toString(), currentPage)
 
         categorizedAnimeLiveData.observe(this) { categorizedAnimeList ->
-            setUpRecyclerView(viewModel,
+            setUpRecyclerView(
+                viewModel,
                 categorizedAnimeList as MutableList<Anime>?,
-                categoryName.toString())
+                categoryName.toString()
+            )
         }
     }
 

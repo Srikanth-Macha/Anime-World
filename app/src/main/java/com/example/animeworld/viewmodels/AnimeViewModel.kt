@@ -50,7 +50,7 @@ class AnimeViewModel : ViewModel() {
 
         viewModelScope.launch(Dispatchers.IO) {
             val categorizedAnimeList =
-                animeInterface.getAnimeByCategory(categoryName.lowercase(), pageNumber)
+                animeInterface.getAnimeByCategory(categoryName.lowercase().trim(), pageNumber)
 
             withContext(Dispatchers.Main) {
                 categorizedAnimeLiveData.value = categorizedAnimeList

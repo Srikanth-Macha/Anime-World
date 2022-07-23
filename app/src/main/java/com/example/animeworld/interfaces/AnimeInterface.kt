@@ -1,5 +1,6 @@
 package com.example.animeworld.interfaces
 
+import android.util.Log
 import com.example.animeworld.models.Anime
 import com.example.animeworld.models.User
 import com.example.animeworld.retrofit.MyRetrofit
