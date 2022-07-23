@@ -12,4 +12,4 @@ data class User(
 
     @SerializedName("password")
     var password: String? = null,
-): Serializable
+) : Serializable
