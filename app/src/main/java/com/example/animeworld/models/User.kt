@@ -1,6 +1,7 @@
 package com.example.animeworld.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class User(
     @SerializedName("username")
@@ -11,4 +12,4 @@ data class User(
 
     @SerializedName("password")
     var password: String? = null,
-)
+): Serializable

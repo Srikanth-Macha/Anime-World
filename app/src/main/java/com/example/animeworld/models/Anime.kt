@@ -59,32 +59,3 @@ data class Anime(
     @SerializedName("user")
     var user: User? = null,
 ) : Serializable
-
-/*
-{
-    "_id": "628a4ff33bc4b4b68bcd0109",
-    "sources": [
-      "https://anidb.net/anime/16157"
-    ],
-    "title": "Zutto Mayonaka de Iinoni.: Tei Chi Boruto",
-    "type": "SPECIAL",
-    "episodes": 1,
-    "status": "FINISHED",
-    "animeSeason": {
-      "season": "SUMMER",
-      "year": 2020
-    },
-    "picture": "https://cdn.anidb.net/images/main/258631.jpg",
-    "thumbnail": "https://cdn.anidb.net/images/main/258631.jpg-thumb.jpg",
-    "synonyms": [
-      "Zutto Mayonaka de Iinoni.: Fastening",
-      "ずっと真夜中でいいのに。『低血ボルト』"
-    ],
-    "relations": [
-
-    ],
-    "tags": [
-
-    ]
- }
-  */

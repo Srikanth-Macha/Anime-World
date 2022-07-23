@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.animeworld.adapters.AnimeAdapter
@@ -16,7 +17,6 @@ class WatchListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityWatchListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -25,7 +25,13 @@ class WatchListActivity : AppCompatActivity() {
         val watchListLiveData = viewModel.getWatchList(userEmail)
 
         watchListLiveData.observe(this) { watchList ->
-            setRecyclerView(watchList)
+            if (watchList.isEmpty()) {
+                binding.emptyMessage.isVisible = true
+                binding.progressBar.visibility = View.GONE
+            } else {
+                setRecyclerView(watchList)
+                binding.emptyMessage.visibility = View.GONE
+            }
         }
     }
 

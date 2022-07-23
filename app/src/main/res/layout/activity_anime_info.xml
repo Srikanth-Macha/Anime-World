@@ -1,210 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@id/scrollView"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:nestedScrollingEnabled="false"
     tools:context=".ui.AnimeInfoActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
+        android:id="@id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/animeImageLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/image_background_stroke"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/animeImage"
-                android:layout_width="200dp"
-                android:layout_height="250dp"
-                android:layout_margin="6dp"
-                android:background="@color/black" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/animeScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            android:text="Score\n"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/animeImageLayout"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/animeRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            android:text="Rating\n"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/animeImageLayout"
-            app:layout_constraintTop_toBottomOf="@id/animeScore" />
-
-        <TextView
-            android:id="@+id/airingDates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:gravity="center_horizontal"
-            android:text="Airing Dates\n"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/animeImageLayout"
-            app:layout_constraintTop_toBottomOf="@id/animeRating" />
-
-        <TextView
-            android:id="@+id/animeTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Anime Title"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/animeImageLayout" />
-
-        <LinearLayout
-            android:id="@+id/tagsLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:foreground="@drawable/text_background_stroke"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingHorizontal="5dp"
-            app:layout_constraintTop_toBottomOf="@id/animeTitle">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/animeType"
+            <LinearLayout
+                android:id="@+id/animeImageLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="animeType" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/image_background_stroke"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <Space
-                android:layout_width="50dp"
-                android:layout_height="0dp" />
+                <ImageView
+                    android:id="@+id/animeImage"
+                    android:layout_width="200dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="6dp"
+                    android:background="@color/black" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/animeStatus"
+                android:id="@+id/animeScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="animeStatus" />
-
-            <Space
-                android:layout_width="50dp"
-                android:layout_height="0dp" />
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:text="Score\n"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/animeImageLayout"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/animeEpisodes"
+                android:id="@+id/animeRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="animeEps" />
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
+                android:text="Rating\n"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/animeImageLayout"
+                app:layout_constraintTop_toBottomOf="@id/animeScore" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/airingDates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="3dp"
+                android:gravity="center_horizontal"
+                android:text="Airing Dates\n"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/animeImageLayout"
+                app:layout_constraintTop_toBottomOf="@id/animeRating" />
 
-        <TextView
-            android:id="@+id/animeTags"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center_horizontal"
-            android:text="Action    Arcade   Thriller"
-            android:textAlignment="center"
-            android:textColor="?colorPrimary"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tagsLayout" />
+            <TextView
+                android:id="@+id/animeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Anime Title"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/animeImageLayout" />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:paddingHorizontal="5dp"
-            android:text="Anime Description"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/animeTags" />
+            <LinearLayout
+                android:id="@+id/tagsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:foreground="@drawable/text_background_stroke"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="5dp"
+                app:layout_constraintTop_toBottomOf="@id/animeTitle">
 
-        <TextView
-            android:id="@+id/sources"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/text_background_stroke"
-            android:text="Sources"
-            android:textAlignment="center"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description" />
+                <TextView
+                    android:id="@+id/animeType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="animeType" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/animeSourcesRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:paddingStart="30dp"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sources" />
+                <Space
+                    android:layout_width="50dp"
+                    android:layout_height="0dp" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addAnimeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="?colorPrimary"
-            android:contentDescription="Add Anime to Watchlist"
-            android:elevation="20dp"
-            android:foregroundGravity="bottom|right"
-            android:src="@drawable/ic_round_add_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+                <TextView
+                    android:id="@+id/animeStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="animeStatus" />
 
-        <ProgressBar
-            android:id="@+id/animeProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:indeterminateTint="?colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+                <Space
+                    android:layout_width="50dp"
+                    android:layout_height="0dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/animeEpisodes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="animeEps" />
 
-</ScrollView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/animeTags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                android:text="Action    Arcade   Thriller"
+                android:textAlignment="center"
+                android:textColor="?colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tagsLayout" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:paddingHorizontal="5dp"
+                android:text="Anime Description"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/animeTags" />
+
+            <TextView
+                android:id="@+id/sources"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/text_background_stroke"
+                android:text="Sources"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/description" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/animeSourcesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingStart="30dp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sources" />
+
+            <ProgressBar
+                android:id="@+id/animeProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:indeterminateTint="?colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addAnimeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="?colorPrimary"
+        android:contentDescription="Add Anime to Watchlist"
+        android:elevation="50dp"
+        android:src="@drawable/ic_round_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
