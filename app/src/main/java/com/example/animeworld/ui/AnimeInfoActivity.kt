@@ -33,15 +33,25 @@ class AnimeInfoActivity : AppCompatActivity() {
         val malScraperLiveData = viewModel.getDataFromMalScraper(anime.title.toString())
 
         malScraperLiveData.observe(this) { animeResponse ->
-            anime.apply {
-                score = animeResponse.score
-                rating = animeResponse.rating
-                startDate = animeResponse.startDate
-                endDate = animeResponse.endDate
-                description = animeResponse.description
+            if (animeResponse.score == null && animeResponse.description == null) {
+                anime.apply {
+                    score = "_"
+                    rating = "_"
+                    startDate = "- "
+                    endDate = " -"
+                    description = "No description available"
+                }
+            } else {
+                anime.apply {
+                    score = animeResponse.score
+                    rating = animeResponse.rating
+                    startDate = animeResponse.startDate
+                    endDate = animeResponse.endDate
+                    description = animeResponse.description
+                }
             }
 
-            updateAnimeDetails(animeResponse, anime)
+            updateAnimeDetails(anime)
         }
 
         binding.apply {
@@ -84,13 +94,13 @@ class AnimeInfoActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateAnimeDetails(animeResponse: Anime, anime: Anime) {
+    private fun updateAnimeDetails(anime: Anime) {
         binding.apply {
-            animeScore.text = animeScore.text.toString() + animeResponse.score
-            animeRating.text = animeRating.text.toString() + animeResponse.rating
+            animeScore.text = animeScore.text.toString() + anime.score
+            animeRating.text = animeRating.text.toString() + anime.rating
             airingDates.text =
-                airingDates.text.toString() + animeResponse.startDate + " to " + animeResponse.endDate
-            description.text = animeResponse.description
+                airingDates.text.toString() + anime.startDate + " to " + anime.endDate
+            description.text = anime.description
 
             anime.sources?.let { setSourcesRecyclerView(it) }
 
