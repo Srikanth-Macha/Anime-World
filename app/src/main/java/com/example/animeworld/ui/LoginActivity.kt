@@ -57,6 +57,8 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT)
                     .show()
 
+                binding.progressBar.visibility = View.GONE
+
                 return@observe
             } else {
                 moveToMainScreen(user) // to Login and show main screen

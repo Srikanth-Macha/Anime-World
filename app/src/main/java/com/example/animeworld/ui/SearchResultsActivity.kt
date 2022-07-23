@@ -3,6 +3,7 @@ package com.example.animeworld.ui
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.animeworld.adapters.AnimeAdapter
@@ -18,13 +19,19 @@ class SearchResultsActivity : AppCompatActivity() {
         binding = ActivitySearchResultsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val queryText = intent.getStringExtra("query text")
+        val queryText = intent.getStringExtra("query text")?.trim()
 
         val viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
         val searchAnimeLiveData = viewModel.searchAnime(queryText!!)
 
         searchAnimeLiveData.observe(this) { searchedAnimeList ->
-            setRecyclerAdapter(searchedAnimeList)
+            if (searchedAnimeList.isEmpty()) {
+                binding.emptyMessage.isVisible = true
+                binding.searchProgressBar.visibility = View.GONE
+            } else {
+                setRecyclerAdapter(searchedAnimeList)
+                binding.emptyMessage.visibility = View.GONE
+            }
         }
     }
 

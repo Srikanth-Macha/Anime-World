@@ -18,79 +18,79 @@
 
         <item
             android:id="@+id/action"
-            android:title="Action" />
+            android:title="   Action" />
 
         <item
             android:id="@+id/adventure"
-            android:title="Adventure" />
+            android:title="   Adventure" />
 
         <item
             android:id="@+id/comedy"
-            android:title="Comedy" />
+            android:title="   Comedy" />
 
         <item
             android:id="@+id/drama"
-            android:title="Drama" />
+            android:title="   Drama" />
 
         <item
             android:id="@+id/familyLife"
-            android:title="Family Life" />
+            android:title="   Family Life" />
 
         <item
             android:id="@+id/fantasy"
-            android:title="Fantasy" />
+            android:title="   Fantasy" />
 
         <item
             android:id="@+id/gods"
-            android:title="Gods" />
+            android:title="   Gods" />
 
         <item
             android:id="@+id/harem"
-            android:title="Harem" />
+            android:title="   Harem" />
 
         <item
             android:id="@+id/martialArts"
-            android:title="Martial Arts" />
+            android:title="   Martial Arts" />
 
         <item
             android:id="@+id/magic"
-            android:title="Magic" />
+            android:title="   Magic" />
 
         <item
             android:id="@+id/ninja"
-            android:title="Ninja" />
+            android:title="   Ninja" />
 
         <item
             android:id="@+id/school"
-            android:title="School" />
+            android:title="   School" />
 
         <item
             android:id="@+id/sci_fi"
-            android:title="Sci-fi" />
+            android:title="   Sci-fi" />
 
         <item
             android:id="@+id/shounen"
-            android:title="Shounen" />
+            android:title="   Shounen" />
 
         <item
             android:id="@+id/superPower"
-            android:title="Super Power" />
+            android:title="   Super Power" />
 
         <item
             android:id="@+id/suspense"
-            android:title="Suspense" />
+            android:title="   Suspense" />
 
         <item
             android:id="@+id/thriller"
-            android:title="Thriller" />
+            android:title="   Thriller" />
 
         <item
             android:id="@+id/tragedy"
-            android:title="Tragedy" />
+            android:title="   Tragedy" />
 
         <item
             android:id="@+id/vigilante"
-            android:title="Vigilantes" />
+            android:title="   Vigilantes" />
 
     </group>
 
@@ -99,4 +99,9 @@
         android:id="@+id/watchList"
         android:icon="@drawable/ic_round_control_point_24"
         android:title="Watch List" />
+
+    <item
+        android:id="@+id/signOut"
+        android:icon="@drawable/ic_baseline_subdirectory_arrow_right_24"
+        android:title="Sign Out" />
 </menu>
