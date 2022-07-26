@@ -2,6 +2,8 @@
 
 package com.example.animeworld.ui
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -77,6 +79,7 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             layoutManager,
             this@MainScreenActivity
         ) {
+            @SuppressLint("NotifyDataSetChanged")
             override fun loadNextPage(page: Int) {
                 binding.progressBar.visibility = View.VISIBLE
 
@@ -157,22 +160,45 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
         val itemName = item.title.toString().lowercase()
 
-        if (itemName == "home" || itemName == "categories") {
-            item.isCheckable = false
+        val navigationExceptions =
+            arrayOf("home", "categories") // No click-action on these menu 0items
 
-            return false
-        }
+        when (itemName) {
+            in navigationExceptions -> {
+                item.isCheckable = false
+                return false
+            }
+            "sign out" -> {
+                signOut()
+                return true
+            }
+            "watch list" -> {
+                val intent = Intent(this@MainScreenActivity, WatchListActivity::class.java)
+                startActivity(intent)
+            }
+            else -> {
+                val intent =
+                    Intent(this@MainScreenActivity, CategorizedAnimeActivity::class.java).apply {
+                        putExtra("categoryName", item.title.toString())
+                    }
 
-        val intent: Intent = if (itemName.contentEquals("Watch List", true)) {
-            Intent(this@MainScreenActivity, WatchListActivity::class.java)
-        } else {
-            Intent(this@MainScreenActivity, CategorizedAnimeActivity::class.java).apply {
-                putExtra("categoryName", item.title.toString())
+                startActivity(intent)
             }
         }
 
-        startActivity(intent)
-
         return true
+    }
+
+    private fun signOut() {
+        Toast.makeText(this, "Signing out . . .", Toast.LENGTH_LONG).show()
+
+        val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
+        val editor = preferences.edit()
+
+        editor.clear()
+        editor.apply()
+
+        startActivity(Intent(this@MainScreenActivity, LoginActivity::class.java))
+        finishAffinity()
     }
 }
