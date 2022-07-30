@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 object MyRetrofit {
     private const val URL = /*"http://192.168.9.187:3000/"*/
-        "https://anime-backend-i2xj.onrender.com/"
+        "https://anime-backend-naj1.onrender.com"
 
     fun getInstance(): Retrofit {
         return Retrofit.Builder()
