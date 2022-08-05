@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="485dp"
+        android:layout_height="590dp"
         android:background="@drawable/ic_image_background"
         android:contentDescription="background"
         app:layout_constraintBottom_toBottomOf="parent" />
