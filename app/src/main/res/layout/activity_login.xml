@@ -4,22 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?colorPrimary"
+    android:background="@color/white"
     tools:context=".ui.LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="590dp"
-        android:background="@drawable/ic_image_background"
-        android:contentDescription="background"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_height="300dp"
+        android:background="@drawable/login_background"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/animeLogo"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:background="@drawable/anime_logo_image"
+        android:contentDescription="Anime Logo"
+        android:elevation="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +35,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="50dp"
         android:fontFamily="@font/comfortaa"
         android:text="Anime World"
         android:textColor="@color/black"
@@ -44,7 +50,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="-10dp"
         android:text="Email"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -52,31 +57,32 @@
         app:layout_constraintBottom_toTopOf="@id/emailInputLayout"
         app:layout_constraintStart_toStartOf="@id/emailInputLayout" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
         android:id="@+id/emailInputLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/edittext_background"
+        android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/emailInputEditText"
-            android:layout_width="280dp"
+            android:layout_width="260dp"
             android:layout_height="50dp"
-            android:background="@drawable/edittext_background"
             android:inputType="textEmailAddress"
+            android:background="@color/transparent"
             android:paddingHorizontal="20dp"
             android:textColor="@color/black" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="-10dp"
         android:text="Password"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -84,40 +90,49 @@
         app:layout_constraintBottom_toTopOf="@id/passwordInputLayout"
         app:layout_constraintStart_toStartOf="@id/passwordInputLayout" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
         android:id="@+id/passwordInputLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:elevation="5dp"
+        android:background="@drawable/edittext_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailInputLayout"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/black">
+        app:layout_constraintTop_toBottomOf="@id/emailInputLayout">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/passwordInputEditText"
-            android:layout_width="280dp"
+            android:layout_width="260dp"
             android:layout_height="50dp"
-            android:background="@drawable/edittext_background"
+            android:background="@color/transparent"
             android:inputType="textPassword"
             android:paddingHorizontal="20dp"
             android:textColor="@color/black" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/loginButton"
+
+    <LinearLayout
+        android:id="@+id/loginButtonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/ic_login_button"
-        android:contentDescription="Login Button"
-        android:elevation="50dp"
+        android:elevation="5dp"
+        android:background="@drawable/button_background"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
+        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" >
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:background="@color/transparent"
+            android:contentDescription="Login Button" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -130,10 +145,10 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/loginButton"
-        app:layout_constraintEnd_toEndOf="@+id/loginButton"
-        app:layout_constraintStart_toStartOf="@+id/loginButton"
-        app:layout_constraintTop_toTopOf="@id/loginButton" />
+        app:layout_constraintBottom_toBottomOf="@id/loginButtonLayout"
+        app:layout_constraintEnd_toEndOf="@+id/loginButtonLayout"
+        app:layout_constraintStart_toStartOf="@+id/loginButtonLayout"
+        app:layout_constraintTop_toTopOf="@id/loginButtonLayout" />
 
     <Button
         android:id="@+id/skipButton"
@@ -153,7 +168,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="2dp"
-        android:text="If you skip the login process, you won't be able to add animes to your Watchlist"
+        android:text="If you skip the login process, you won't be able to add animes to your watchlist"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="14sp"
@@ -172,6 +187,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginButton" />
+        app:layout_constraintTop_toBottomOf="@id/loginButtonLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

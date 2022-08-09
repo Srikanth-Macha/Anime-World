@@ -25,6 +25,8 @@ import com.example.animeworld.models.Anime
 import com.example.animeworld.viewmodels.AnimeViewModel
 import com.google.android.material.navigation.NavigationView
 
+// TODO Custom messages if the user is not logged in
+
 class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainScreenBinding
     private lateinit var actionBarToggle: ActionBarDrawerToggle

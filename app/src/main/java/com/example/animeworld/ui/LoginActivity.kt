@@ -21,6 +21,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         binding.skipButton.setOnClickListener {
             startActivity(Intent(this, MainScreenActivity::class.java))
             finishAffinity()
@@ -39,9 +41,11 @@ class LoginActivity : AppCompatActivity() {
                     loginUser(User(username, email, password))
                 } else {
                     Toast.makeText(this, "Password is too short", Toast.LENGTH_SHORT).show()
+                    binding.progressBar.isVisible = false
                 }
             } else {
                 Toast.makeText(this, "Invalid Email", Toast.LENGTH_SHORT).show()
+                binding.progressBar.isVisible = false
             }
 
         }
