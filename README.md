@@ -17,11 +17,7 @@ It uses [Anime-Backend](https://github.com/Srikanth-Macha/Anime-Backend) as its 
     &nbsp
     &nbsp
   <img src="https://github.com/Srikanth-Macha/Anime-World/blob/master/screenshots/Screenshot_20220823-194918_Anime%20World.png" width="300" height="600" />
-    &nbsp
-    &nbsp
-    &nbsp
-    &nbsp
-    &nbsp
+    <br></br>
   <img src="https://github.com/Srikanth-Macha/Anime-World/blob/master/screenshots/Screenshot_20220823-195350_Anime%20World.png" width="300" height="600" />
     &nbsp
     &nbsp
@@ -29,11 +25,7 @@ It uses [Anime-Backend](https://github.com/Srikanth-Macha/Anime-Backend) as its 
     &nbsp
     &nbsp
   <img src="https://github.com/Srikanth-Macha/Anime-World/blob/master/screenshots/Screenshot_20220823-195358_Anime%20World.png" width="300" height="600" />
-    &nbsp
-    &nbsp
-    &nbsp
-    &nbsp
-    &nbsp
+    <br></br>
   <img src="https://github.com/Srikanth-Macha/Anime-World/blob/master/screenshots/Screenshot_20220823-201954_Anime%20World.png" width="300" height="600" />
     &nbsp
     &nbsp
@@ -41,11 +33,7 @@ It uses [Anime-Backend](https://github.com/Srikanth-Macha/Anime-Backend) as its 
     &nbsp
     &nbsp
   <img src="https://github.com/Srikanth-Macha/Anime-World/blob/master/screenshots/Screenshot_20220823-202014_Anime%20World.png" width="300" height="600" />
-    &nbsp
-    &nbsp
-    &nbsp
-    &nbsp
-    &nbsp
+    <br></br>
   <img src="https://github.com/Srikanth-Macha/Anime-World/blob/master/screenshots/Screenshot_20220823-202412_Anime%20World.png" width="300" height="600" />
     &nbsp
     &nbsp
