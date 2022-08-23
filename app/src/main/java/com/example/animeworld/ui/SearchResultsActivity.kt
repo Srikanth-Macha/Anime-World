@@ -21,6 +21,11 @@ class SearchResultsActivity : AppCompatActivity() {
 
         val queryText = intent.getStringExtra("query text")?.trim()
 
+        supportActionBar?.apply {
+            title = queryText
+            setDisplayHomeAsUpEnabled(true)
+        }
+
         val viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
         val searchAnimeLiveData = viewModel.searchAnime(queryText!!)
 
@@ -50,5 +55,10 @@ class SearchResultsActivity : AppCompatActivity() {
         }
 
         binding.searchProgressBar.visibility = View.GONE
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

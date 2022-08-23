@@ -1,8 +1,8 @@
 package com.example.animeworld.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,7 +22,11 @@ class CategorizedAnimeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val categoryName = intent.getStringExtra("categoryName")
-        Toast.makeText(this, "$categoryName Anime", Toast.LENGTH_SHORT).show()
+
+        supportActionBar?.apply {
+            title = categoryName
+            setDisplayHomeAsUpEnabled(true)
+        }
 
         val viewModel: AnimeViewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
         val categorizedAnimeLiveData =
@@ -48,6 +52,7 @@ class CategorizedAnimeActivity : AppCompatActivity() {
             gridLayoutManager,
             this@CategorizedAnimeActivity) {
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun loadNextPage(page: Int) {
                 binding.categoriesProgressBar.visibility = View.VISIBLE
                 val categorizedAnimeLiveData = viewModel.getCategorizedAnime(categoryName, page)
@@ -68,5 +73,10 @@ class CategorizedAnimeActivity : AppCompatActivity() {
         }
 
         binding.categoriesProgressBar.visibility = View.GONE
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

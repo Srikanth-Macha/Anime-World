@@ -20,6 +20,8 @@ class WatchListActivity : AppCompatActivity() {
         binding = ActivityWatchListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
         val userEmail = getSharedPreferences("User", Context.MODE_PRIVATE).getString("Email", null)
 
@@ -54,5 +56,10 @@ class WatchListActivity : AppCompatActivity() {
         }
 
         binding.progressBar.visibility = View.GONE
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#010101"
+    android:background="#050505"
     tools:context=".ui.LoginActivity">
 
     <ImageView
@@ -42,7 +42,7 @@
 
         <EditText
             android:id="@+id/emailInputEditText"
-            android:layout_width="260dp"
+            android:layout_width="280dp"
             android:layout_height="50dp"
             android:background="@color/transparent"
             android:drawableStart="@drawable/ic_outline_email_24"
@@ -63,29 +63,32 @@
         app:layout_constraintBottom_toTopOf="@id/passwordInputLayout"
         app:layout_constraintStart_toStartOf="@id/passwordInputLayout" />
 
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInputLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_height="52dp"
         android:layout_marginTop="35dp"
         android:background="@drawable/edittext_background"
         android:backgroundTint="@color/white"
         android:elevation="5dp"
+        android:paddingBottom="8dp"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailInputLayout">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordInputEditText"
-            android:layout_width="260dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@color/transparent"
             android:drawableStart="@drawable/ic_outline_lock_24"
             android:inputType="textPassword"
             android:paddingHorizontal="18dp"
             android:textColor="@color/black" />
 
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <LinearLayout
