@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
 
         <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">#080808</item>
 
     </style>
 </resources>

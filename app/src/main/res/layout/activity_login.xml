@@ -4,54 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#010101"
     tools:context=".ui.LoginActivity">
 
-
-    <LinearLayout
+    <ImageView
+        android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@drawable/login_background"
-        android:elevation="10dp"
+        android:layout_height="0dp"
+        android:src="@drawable/photo_background"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/animeLogo"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:background="@drawable/anime_logo_image"
-        android:contentDescription="Anime Logo"
-        android:elevation="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="-44dp" />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="50dp"
-        android:fontFamily="@font/comfortaa"
-        android:text="Anime World"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/animeLogo" />
-
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="Email"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/emailInputLayout"
@@ -61,20 +33,21 @@
         android:id="@+id/emailInputLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
         android:background="@drawable/edittext_background"
+        android:backgroundTint="@color/white"
         android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title">
+        app:layout_constraintTop_toBottomOf="@id/logo">
 
         <EditText
             android:id="@+id/emailInputEditText"
             android:layout_width="260dp"
             android:layout_height="50dp"
-            android:inputType="textEmailAddress"
             android:background="@color/transparent"
-            android:paddingHorizontal="20dp"
+            android:drawableStart="@drawable/ic_outline_email_24"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="18dp"
             android:textColor="@color/black" />
 
     </LinearLayout>
@@ -84,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="Password"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/passwordInputLayout"
@@ -95,19 +68,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:elevation="5dp"
         android:background="@drawable/edittext_background"
+        android:backgroundTint="@color/white"
+        android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailInputLayout">
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <EditText
             android:id="@+id/passwordInputEditText"
             android:layout_width="260dp"
             android:layout_height="50dp"
             android:background="@color/transparent"
+            android:drawableStart="@drawable/ic_outline_lock_24"
             android:inputType="textPassword"
-            android:paddingHorizontal="20dp"
+            android:paddingHorizontal="18dp"
             android:textColor="@color/black" />
 
     </LinearLayout>
@@ -117,13 +92,14 @@
         android:id="@+id/loginButtonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="5dp"
+        android:layout_marginTop="18dp"
         android:background="@drawable/button_background"
-        android:layout_marginTop="15dp"
+        android:backgroundTint="?colorPrimary"
+        android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" >
+        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout">
 
         <Button
             android:id="@+id/loginButton"
@@ -156,6 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:background="@drawable/edittext_background"
+        android:backgroundTint="@color/white"
         android:text="skip"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -170,7 +147,7 @@
         android:layout_marginTop="2dp"
         android:text="If you skip the login process, you won't be able to add animes to your watchlist"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
