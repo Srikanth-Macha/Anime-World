@@ -55,11 +55,5 @@ It uses [Anime-Backend](https://github.com/Srikanth-Macha/Anime-Backend) as its 
     &nbsp
     &nbsp
   <img src="https://github.com/Srikanth-Macha/Anime-World/blob/master/screenshots/Screenshot_20220823-202714_Anime%20World.png" width="300" height="600" />
-    &nbsp
-    &nbsp
-    &nbsp
-    &nbsp
-    &nbsp
-  <img src="https://github.com/Srikanth-Macha/Anime-World/blob/master/screenshots/Screenshot_20220823-202734_Anime%20World.png" width="300" height="600" />
-
+   
 
