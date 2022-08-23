@@ -94,7 +94,7 @@
         android:id="@+id/passwordInputLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="35dp"
         android:elevation="5dp"
         android:background="@drawable/edittext_background"
         app:layout_constraintEnd_toEndOf="parent"
