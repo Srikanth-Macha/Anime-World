@@ -78,7 +78,6 @@ class LoginActivity : AppCompatActivity() {
             editor.apply {
                 putString("Username", user.username)
                 putString("Email", user.email)
-                putString("Password", user.password)
                 apply()
             }
         }

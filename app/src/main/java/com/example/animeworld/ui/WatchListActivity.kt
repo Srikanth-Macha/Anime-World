@@ -22,6 +22,7 @@ class WatchListActivity : AppCompatActivity() {
 
         val viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
         val userEmail = getSharedPreferences("User", Context.MODE_PRIVATE).getString("Email", null)
+
         val watchListLiveData = viewModel.getWatchList(userEmail)
 
         watchListLiveData.observe(this) { watchList ->

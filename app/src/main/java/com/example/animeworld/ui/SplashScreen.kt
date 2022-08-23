@@ -7,19 +7,22 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.animeworld.R
+import com.example.animeworld.databinding.ActivitySplashScreenBinding
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
+    lateinit var binding: ActivitySplashScreenBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
-        val username = preferences.getString("Username", "default")
+        val userEmail = preferences.getString("Email", "default")
 
-        if (username != "default") {
-            Toast.makeText(this, "Hello $username", Toast.LENGTH_SHORT).show()
+        if (userEmail != "default") {
+            Toast.makeText(this, "Hello $userEmail", Toast.LENGTH_SHORT).show()
             moveToNextScreen(Intent(this, MainScreenActivity::class.java))
 
         } else {
@@ -34,6 +37,6 @@ class SplashScreen : AppCompatActivity() {
         Handler().postDelayed({
             startActivity(intent)
             finish()
-        }, 1000)
+        }, 1200)
     }
 }
