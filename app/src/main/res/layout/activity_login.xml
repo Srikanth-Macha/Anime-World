@@ -31,18 +31,19 @@
 
     <LinearLayout
         android:id="@+id/emailInputLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edittext_background"
         android:backgroundTint="@color/white"
         android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo">
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        app:layout_constraintWidth_percent="0.69">
 
         <EditText
             android:id="@+id/emailInputEditText"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/transparent"
             android:drawableStart="@drawable/ic_outline_email_24"
@@ -65,18 +66,19 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInputLayout"
-        android:layout_width="280dp"
+        android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_marginTop="35dp"
         android:background="@drawable/edittext_background"
         android:backgroundTint="@color/white"
         android:elevation="5dp"
         android:paddingBottom="8dp"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailInputLayout">
+        app:layout_constraintTop_toBottomOf="@id/emailInputLayout"
+        app:layout_constraintWidth_percent="0.69"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordInputEditText"
@@ -92,7 +94,7 @@
 
 
     <LinearLayout
-        android:id="@+id/loginButtonLayout"
+        android:id="@+id/goButtonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
@@ -105,29 +107,16 @@
         app:layout_constraintTop_toBottomOf="@id/passwordInputLayout">
 
         <Button
-            android:id="@+id/loginButton"
-            android:layout_width="110dp"
+            android:id="@+id/goButton"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:background="@color/transparent"
-            android:contentDescription="Login Button" />
+            android:contentDescription="Proceed Button"
+            android:text="GO"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:elevation="50dp"
-        android:fontFamily="@font/comfortaa"
-        android:text="Login"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/loginButtonLayout"
-        app:layout_constraintEnd_toEndOf="@+id/loginButtonLayout"
-        app:layout_constraintStart_toStartOf="@+id/loginButtonLayout"
-        app:layout_constraintTop_toTopOf="@id/loginButtonLayout" />
 
     <Button
         android:id="@+id/skipButton"
@@ -157,16 +146,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/skipButton" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="?colorPrimary"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/skipButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginButtonLayout" />
+        app:layout_constraintTop_toBottomOf="@id/goButtonLayout"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lottie_loading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

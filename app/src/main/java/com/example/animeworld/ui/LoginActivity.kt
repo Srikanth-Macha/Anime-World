@@ -28,8 +28,8 @@ class LoginActivity : AppCompatActivity() {
             finishAffinity()
         }
 
-        binding.loginButton.setOnClickListener {
-            binding.progressBar.isVisible = true
+        binding.goButton.setOnClickListener {
+            binding.lottieLoading.isVisible = true
 
             val email = binding.emailInputEditText.text.toString()
             val password = binding.passwordInputEditText.text.toString()
@@ -41,11 +41,11 @@ class LoginActivity : AppCompatActivity() {
                     loginUser(User(username, email, password))
                 } else {
                     Toast.makeText(this, "Password is too short", Toast.LENGTH_SHORT).show()
-                    binding.progressBar.isVisible = false
+                    binding.lottieLoading.isVisible = false
                 }
             } else {
                 Toast.makeText(this, "Invalid Email", Toast.LENGTH_SHORT).show()
-                binding.progressBar.isVisible = false
+                binding.lottieLoading.isVisible = false
             }
 
         }
@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT)
                     .show()
 
-                binding.progressBar.visibility = View.GONE
+                binding.lottieLoading.visibility = View.GONE
 
                 return@observe
             } else {
@@ -84,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
         Toast.makeText(this, "Successfully logged in as ${user.username}", Toast.LENGTH_SHORT)
             .show()
 
-        binding.progressBar.visibility = View.GONE
+        binding.lottieLoading.visibility = View.GONE
 
         startActivity(Intent(this, MainScreenActivity::class.java))
         finishAffinity()

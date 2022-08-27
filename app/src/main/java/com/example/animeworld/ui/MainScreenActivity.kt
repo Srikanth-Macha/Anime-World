@@ -33,7 +33,7 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     private lateinit var viewModel: AnimeViewModel
     private var searchAnimeLiveData: LiveData<Anime> = MutableLiveData()
 
-    private var currentPage = 7
+    private var currentPage = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +83,7 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         ) {
             @SuppressLint("NotifyDataSetChanged")
             override fun loadNextPage(page: Int) {
-                binding.progressBar.visibility = View.VISIBLE
+                binding.lottieLoading.visibility = View.VISIBLE
 
                 val newAnimeLiveData = viewModel.showAnimePageData(page)
 
@@ -91,7 +91,7 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                     animeList?.addAll(newAnimeList)
                     notifyDataSetChanged()
 
-                    binding.progressBar.visibility = View.GONE
+                    binding.lottieLoading.visibility = View.GONE
                 }
 
             }
@@ -108,7 +108,7 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             this.layoutManager = layoutManager
         }
 
-        binding.progressBar.visibility = View.GONE
+        binding.lottieLoading.visibility = View.GONE
     }
 
     private fun setNavigationView() {

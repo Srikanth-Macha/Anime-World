@@ -5,18 +5,26 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.animeworld.R
 import com.example.animeworld.databinding.ActivitySplashScreenBinding
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
-    lateinit var binding: ActivitySplashScreenBinding
+    companion object {
+        private const val ANIMATION_DURATION = 1000L
+    }
+
+    private lateinit var binding: ActivitySplashScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setAnimation()
 
         val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
         val userEmail = preferences.getString("Email", "default")
@@ -27,6 +35,22 @@ class SplashScreen : AppCompatActivity() {
 
         } else {
             moveToNextScreen(Intent(this, LoginActivity::class.java))
+        }
+    }
+
+    private fun setAnimation() {
+        binding.splashScreenLogo.animation =
+            AnimationUtils.loadAnimation(this, R.anim.fade_animation).apply {
+                duration = ANIMATION_DURATION
+            }
+
+        binding.animeWorld.apply {
+            animate().translationY(-280f).duration = ANIMATION_DURATION
+
+            animation =
+                AnimationUtils.loadAnimation(this@SplashScreen, R.anim.fade_animation).apply {
+                    duration = ANIMATION_DURATION
+                }
         }
     }
 

@@ -32,7 +32,7 @@ class SearchResultsActivity : AppCompatActivity() {
         searchAnimeLiveData.observe(this) { searchedAnimeList ->
             if (searchedAnimeList.isEmpty()) {
                 binding.emptyMessage.isVisible = true
-                binding.searchProgressBar.visibility = View.GONE
+                binding.lottieLoading.visibility = View.GONE
             } else {
                 setRecyclerAdapter(searchedAnimeList)
                 binding.emptyMessage.visibility = View.GONE
@@ -54,7 +54,7 @@ class SearchResultsActivity : AppCompatActivity() {
             this.layoutManager = layoutManager
         }
 
-        binding.searchProgressBar.visibility = View.GONE
+        binding.lottieLoading.visibility = View.GONE
     }
 
     override fun onSupportNavigateUp(): Boolean {

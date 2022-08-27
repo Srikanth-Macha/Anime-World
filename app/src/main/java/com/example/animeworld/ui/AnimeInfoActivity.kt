@@ -99,7 +99,7 @@ class AnimeInfoActivity : AppCompatActivity() {
 
             anime.sources?.let { setSourcesRecyclerView(it) }
 
-            animeProgressBar.visibility = View.GONE
+            lottieLoading.visibility = View.GONE
             enableBackgroundInteraction()
         }
     }
@@ -111,6 +111,8 @@ class AnimeInfoActivity : AppCompatActivity() {
 
     private fun enableBackgroundInteraction() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+
+        binding.blurLayout.visibility = View.GONE
     }
 
     // for scrollable list of source links of Anime to watch

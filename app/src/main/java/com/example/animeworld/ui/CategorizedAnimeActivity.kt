@@ -54,14 +54,14 @@ class CategorizedAnimeActivity : AppCompatActivity() {
 
             @SuppressLint("NotifyDataSetChanged")
             override fun loadNextPage(page: Int) {
-                binding.categoriesProgressBar.visibility = View.VISIBLE
+                binding.lottieLoading.visibility = View.VISIBLE
                 val categorizedAnimeLiveData = viewModel.getCategorizedAnime(categoryName, page)
 
                 categorizedAnimeLiveData.observe(this@CategorizedAnimeActivity) { newAnimeList ->
                     categorizedAnimeList?.addAll(newAnimeList)
                     notifyDataSetChanged()
 
-                    binding.categoriesProgressBar.visibility = View.GONE
+                    binding.lottieLoading.visibility = View.GONE
                 }
 
             }
@@ -72,7 +72,7 @@ class CategorizedAnimeActivity : AppCompatActivity() {
             this.layoutManager = gridLayoutManager
         }
 
-        binding.categoriesProgressBar.visibility = View.GONE
+        binding.lottieLoading.visibility = View.GONE
     }
 
     override fun onSupportNavigateUp(): Boolean {
