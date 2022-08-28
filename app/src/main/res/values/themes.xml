@@ -14,7 +14,6 @@
         <!-- Customize your theme here. -->
 
         <item name="android:textColor">@color/black</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
 
     </style>
 
