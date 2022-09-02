@@ -25,7 +25,6 @@ class AnimeSourcesAdapter(
 
     override fun onBindViewHolder(holder: SourcesViewHolder, position: Int) {
         holder.animeSourceItem.text = sources[position]
-        holder.onItemClick(context)
     }
 
     override fun getItemCount(): Int = sources.size
@@ -34,18 +33,4 @@ class AnimeSourcesAdapter(
 
 class SourcesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val animeSourceItem: TextView = view.findViewById(R.id.animeSourceItemID)
-
-    fun onItemClick(context: Context) {
-        animeSourceItem.setOnClickListener { clickedItem ->
-            val sourceItem = clickedItem as TextView
-
-            val sourceItemText = sourceItem.text
-            sourceItem.setBackgroundColor(Color.parseColor("#00428A"))
-
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(sourceItemText.toString())
-            context.startActivity(intent)
-        }
-    }
-
 }

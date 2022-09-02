@@ -12,7 +12,7 @@ import com.example.animeworld.R
 import com.example.animeworld.databinding.ActivitySplashScreenBinding
 
 @SuppressLint("CustomSplashScreen")
-class SplashScreen : AppCompatActivity() {
+class SplashScreenActivity : AppCompatActivity() {
     companion object {
         private const val ANIMATION_DURATION = 1000L
     }
@@ -28,9 +28,10 @@ class SplashScreen : AppCompatActivity() {
 
         val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
         val userEmail = preferences.getString("Email", "default")
+        val username = preferences.getString("Username", null)
 
         if (userEmail != "default") {
-            Toast.makeText(this, "Hello $userEmail", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Hello $username", Toast.LENGTH_SHORT).show()
             moveToNextScreen(Intent(this, MainScreenActivity::class.java))
 
         } else {
@@ -48,12 +49,13 @@ class SplashScreen : AppCompatActivity() {
             animate().translationY(-280f).duration = ANIMATION_DURATION
 
             animation =
-                AnimationUtils.loadAnimation(this@SplashScreen, R.anim.fade_animation).apply {
+                AnimationUtils.loadAnimation(this@SplashScreenActivity, R.anim.fade_animation).apply {
                     duration = ANIMATION_DURATION
                 }
         }
     }
 
+    @Suppress("DEPRECATION") // For Handler()
     private fun moveToNextScreen(intent: Intent) {
         actionBar?.hide()
         supportActionBar?.hide()
