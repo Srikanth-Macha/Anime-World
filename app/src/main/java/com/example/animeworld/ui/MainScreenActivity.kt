@@ -163,7 +163,7 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         val itemName = item.title.toString().lowercase()
 
         val navigationExceptions =
-            arrayOf("home", "categories") // No click-action on these menu 0items
+            arrayOf("categories") // No click-action on these menu items
 
         when (itemName) {
             in navigationExceptions -> {
@@ -175,8 +175,10 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 return true
             }
             "watch list" -> {
-                val intent = Intent(this@MainScreenActivity, WatchListActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this@MainScreenActivity, WatchListActivity::class.java))
+            }
+            "favourites" -> {
+                startActivity(Intent(this@MainScreenActivity, FavouritesActivity::class.java))
             }
             else -> {
                 val intent =

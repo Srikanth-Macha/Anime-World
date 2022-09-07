@@ -6,6 +6,11 @@
         android:icon="@drawable/icons_round_home_24"
         android:title="Home" />
 
+    <item
+        android:id="@+id/favourites"
+        android:icon="@drawable/ic_round_favorite_border_24"
+        android:title="Favourites" />
+
     <group
         android:id="@+id/categoriesList"
         android:menuCategory="container">
