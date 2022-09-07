@@ -49,9 +49,10 @@ class SplashScreenActivity : AppCompatActivity() {
             animate().translationY(-280f).duration = ANIMATION_DURATION
 
             animation =
-                AnimationUtils.loadAnimation(this@SplashScreenActivity, R.anim.fade_animation).apply {
-                    duration = ANIMATION_DURATION
-                }
+                AnimationUtils.loadAnimation(this@SplashScreenActivity, R.anim.fade_animation)
+                    .apply {
+                        duration = ANIMATION_DURATION
+                    }
         }
     }
 

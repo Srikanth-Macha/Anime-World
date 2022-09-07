@@ -1,6 +1,5 @@
 package com.example.animeworld.ui
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -8,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.animeworld.R
 import com.example.animeworld.adapters.AnimeAdapter
 import com.example.animeworld.databinding.ActivityWatchListBinding
 import com.example.animeworld.models.Anime
