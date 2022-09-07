@@ -83,5 +83,4 @@ class AnimeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
     }
 
-
 }
