@@ -27,9 +27,15 @@ interface RetrofitAnimeInterface {
     @GET("/getWatchListData")
     suspend fun getWatchList(@Query("email") email: String): Response<List<Anime>>
 
+    @GET("/getFavouritesData")
+    suspend fun getFavourites(@Query("email") email: String): Response<List<Anime>>
+
 
     @POST("/addToWatchList")
     suspend fun addToWatchList(@Body requestAnime: Anime): Response<Anime>
+
+    @POST("/addToFavourites")
+    suspend fun addToFavourites(@Body requestAnime: Anime): Response<Anime>
 
     @POST("/addUser")
     suspend fun loginUser(@Body user: User): Response<User?>

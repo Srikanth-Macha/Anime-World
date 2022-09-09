@@ -34,16 +34,28 @@ object AnimeInterface {
         return malScraperResponse.body()
     }
 
+    suspend fun getWatchList(email: String): List<Anime>? {
+        val watchListResponse = retrofitAnimeInterface.getWatchList(email)
+
+        return watchListResponse.body()
+    }
+
+    suspend fun getFavourites(email: String): List<Anime>? {
+        val favouritesResponse = retrofitAnimeInterface.getFavourites(email)
+
+        return favouritesResponse.body()
+    }
+
     suspend fun addToWatchList(requestAnime: Anime): Anime? {
         val postAnimeResponse = retrofitAnimeInterface.addToWatchList(requestAnime)
 
         return postAnimeResponse.body()
     }
 
-    suspend fun getWatchList(email: String): List<Anime>? {
-        val watchListResponse = retrofitAnimeInterface.getWatchList(email)
+    suspend fun addToFavourites(requestAnime: Anime): Anime? {
+        val postAnimeResponse = retrofitAnimeInterface.addToFavourites(requestAnime)
 
-        return watchListResponse.body()
+        return postAnimeResponse.body()
     }
 
     suspend fun loginUser(user: User): User? {

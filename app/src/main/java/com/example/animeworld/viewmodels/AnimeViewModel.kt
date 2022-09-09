@@ -1,6 +1,5 @@
 package com.example.animeworld.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,7 +37,6 @@ class AnimeViewModel : ViewModel() {
 
             withContext(Dispatchers.Main) {
                 animeSearchLiveData.value = searchedAnime
-                Log.w("Search Anime Response", searchedAnime.toString())
             }
         }
 
@@ -74,6 +72,34 @@ class AnimeViewModel : ViewModel() {
         return malScraperLiveData
     }
 
+    fun getWatchList(email: String?): LiveData<List<Anime>> {
+        val watchListLiveData = MutableLiveData<List<Anime>>()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val watchList = animeInterface.getWatchList(email.toString())
+
+            withContext(Dispatchers.Main) {
+                watchListLiveData.value = watchList
+            }
+        }
+
+        return watchListLiveData
+    }
+
+    fun getFavourites(email: String): LiveData<List<Anime>> {
+        val favouritesLiveData = MutableLiveData<List<Anime>>()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val favourites = animeInterface.getFavourites(email)
+
+            withContext(Dispatchers.Main) {
+                favouritesLiveData.value = favourites
+            }
+        }
+
+        return favouritesLiveData
+    }
+
     fun addAnimeToWatchList(requestAnime: Anime): LiveData<Anime> {
         val postAnimeLiveData = MutableLiveData<Anime>()
 
@@ -88,18 +114,18 @@ class AnimeViewModel : ViewModel() {
         return postAnimeLiveData
     }
 
-    fun getWatchList(email: String?): LiveData<List<Anime>> {
-        val watchListLiveData = MutableLiveData<List<Anime>>()
+    fun addAnimeToFavourites(requestAnime: Anime): LiveData<Anime> {
+        val postAnimeLiveData = MutableLiveData<Anime>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val watchList = animeInterface.getWatchList(email.toString())
+            val watchListData = animeInterface.addToFavourites(requestAnime)
 
             withContext(Dispatchers.Main) {
-                watchListLiveData.value = watchList
+                postAnimeLiveData.value = watchListData
             }
         }
 
-        return watchListLiveData
+        return postAnimeLiveData
     }
 
     fun loginUser(user: User): LiveData<User?> {

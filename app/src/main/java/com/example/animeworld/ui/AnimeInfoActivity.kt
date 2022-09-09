@@ -24,6 +24,8 @@ class AnimeInfoActivity : AppCompatActivity() {
         binding = ActivityAnimeInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         disableBackgroundInteraction()
 
         val anime: Anime = intent.getSerializableExtra("anime info") as Anime
@@ -75,20 +77,48 @@ class AnimeInfoActivity : AppCompatActivity() {
         Glide.with(this).load(anime.picture).into(binding.animeImage)
 
         addAnimeToWatchList(viewModel, anime)
+        addAnimeToFavourites(viewModel, anime)
     }
 
     private fun addAnimeToWatchList(viewModel: AnimeViewModel, anime: Anime) {
-        binding.addAnimeButton.setOnClickListener {
+        binding.addToWatchList.setOnClickListener {
             val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
-
             anime.userEmail = preferences.getString("Email", null)
 
             viewModel.addAnimeToWatchList(anime)
 
-            Toast.makeText(this, "Adding to the Watchlist . . .", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Adding to the Watchlist . . .", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.addToWatchList.setOnLongClickListener {
+            Toast.makeText(this@AnimeInfoActivity,
+                "To add this anime to WatchList",
+                Toast.LENGTH_SHORT).show()
+
+            return@setOnLongClickListener true
         }
     }
 
+    private fun addAnimeToFavourites(viewModel: AnimeViewModel, anime: Anime) {
+        binding.addToFavourites.setOnClickListener {
+            val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
+            anime.userEmail = preferences.getString("Email", null)
+
+            viewModel.addAnimeToFavourites(anime)
+
+            Toast.makeText(this, "Adding to the Favourites . . .", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.addToFavourites.setOnLongClickListener {
+            Toast.makeText(this@AnimeInfoActivity,
+                "To add this anime to Favourites",
+                Toast.LENGTH_SHORT).show()
+
+            return@setOnLongClickListener true
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
     private fun updateAnimeDetails(anime: Anime) {
         binding.apply {
             animeScore.text = animeScore.text.toString() + anime.score
@@ -123,5 +153,10 @@ class AnimeInfoActivity : AppCompatActivity() {
                 override fun canScrollVertically(): Boolean = false
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
