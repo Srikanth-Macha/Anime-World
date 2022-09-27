@@ -220,7 +220,18 @@
             android:backgroundTint="?colorPrimary"
             android:contentDescription="Add Anime to Watchlist"
             android:elevation="10dp"
-            android:src="@drawable/ic_round_favorite_24" />
+            android:src="@drawable/ic_round_favorite_border_24" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/removeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="?colorPrimary"
+            android:contentDescription="Add Anime to Watchlist"
+            android:elevation="10dp"
+            android:src="@drawable/ic_round_delete_outline_24"/>
 
     </LinearLayout>
 

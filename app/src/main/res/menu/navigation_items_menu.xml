@@ -3,12 +3,12 @@
     <item
         android:id="@+id/home"
         android:checkable="false"
-        android:icon="@drawable/icons_round_home_24"
+        android:icon="@drawable/ic_outline_home_24"
         android:title="Home" />
 
     <item
         android:id="@+id/favourites"
-        android:icon="@drawable/ic_round_favorite_24"
+        android:icon="@drawable/ic_round_favorite_border_24"
         android:title="Favourites" />
 
     <group

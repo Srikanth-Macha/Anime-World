@@ -12,12 +12,14 @@ import com.example.animeworld.models.Anime
 import com.example.animeworld.viewmodels.AnimeViewModel
 
 class FavouritesActivity : AppCompatActivity() {
-    lateinit var binding: ActivityFavouritesBinding
+    private lateinit var binding: ActivityFavouritesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFavouritesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val userEmail = getSharedPreferences("User", Context.MODE_PRIVATE).getString("Email", null)
 
@@ -46,5 +48,12 @@ class FavouritesActivity : AppCompatActivity() {
             this.adapter = adapter
             this.layoutManager = layoutManager
         }
+
+        binding.lottieLoading.visibility = View.GONE
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onNavigateUp()
     }
 }

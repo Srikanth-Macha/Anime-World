@@ -26,9 +26,11 @@ class AnimeInfoActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        disableBackgroundInteraction()
+        disableBackgroundInteraction() // when progress bar is loading
 
         val anime: Anime = intent.getSerializableExtra("anime info") as Anime
+
+        showFloatingButtons() // Show floating button according to previous intent
 
         val viewModel: AnimeViewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
         val malScraperLiveData = viewModel.getDataFromMalScraper(anime.title.toString())
@@ -80,6 +82,26 @@ class AnimeInfoActivity : AppCompatActivity() {
         addAnimeToFavourites(viewModel, anime)
     }
 
+    private fun showFloatingButtons() {
+        val activityName = intent.getStringExtra("activity name")
+
+        if (activityName?.contains("MainScreenActivity") == true) {
+            binding.removeButton.visibility = View.GONE
+        }
+        else {
+            if (activityName?.contains("WatchListActivity") == true) {
+                binding.addToWatchList.visibility = View.GONE
+            }
+            else if (activityName?.contains("FavouritesActivity") == true) {
+                binding.addToFavourites.visibility = View.GONE
+            }
+
+            binding.removeButton.setOnClickListener {
+                Toast.makeText(this@AnimeInfoActivity, "remove", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun addAnimeToWatchList(viewModel: AnimeViewModel, anime: Anime) {
         binding.addToWatchList.setOnClickListener {
             val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
@@ -92,7 +114,7 @@ class AnimeInfoActivity : AppCompatActivity() {
 
         binding.addToWatchList.setOnLongClickListener {
             Toast.makeText(this@AnimeInfoActivity,
-                "To add this anime to WatchList",
+                "Add this anime to WatchList",
                 Toast.LENGTH_SHORT).show()
 
             return@setOnLongClickListener true
@@ -111,7 +133,7 @@ class AnimeInfoActivity : AppCompatActivity() {
 
         binding.addToFavourites.setOnLongClickListener {
             Toast.makeText(this@AnimeInfoActivity,
-                "To add this anime to Favourites",
+                "Add this anime to Favourites",
                 Toast.LENGTH_SHORT).show()
 
             return@setOnLongClickListener true

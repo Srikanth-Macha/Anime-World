@@ -47,13 +47,11 @@ abstract class AnimeAdapter(
                 .into(holder.animeImage)
         }
 
-        Log.i("Item Number: ", position.toString())
-
         val firstVisibleItemPosition = layoutManager.findFirstCompletelyVisibleItemPosition()
         val visibleItems = layoutManager.childCount
 
         if (firstVisibleItemPosition + visibleItems >= itemCount - 1) {
-            loadNextPage(itemCount / 30 + 1)
+            loadNextPage((itemCount / 30) + 1)
         }
 
     }
@@ -77,8 +75,10 @@ class AnimeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         animeImage.setOnClickListener {
             Log.i("item name", animeName.text.toString())
 
-            val i = Intent(context, AnimeInfoActivity::class.java)
-            i.putExtra("anime info", animeList[adapterPosition])
+            val i = Intent(context, AnimeInfoActivity::class.java).apply {
+                putExtra("anime info", animeList[adapterPosition])
+                putExtra("activity name", context.javaClass.name)
+            }
             context.startActivity(i)
         }
     }
