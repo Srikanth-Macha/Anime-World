@@ -2,18 +2,24 @@ package com.example.animeworld.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.animeworld.R
 import com.example.animeworld.adapters.AnimeSourcesAdapter
 import com.example.animeworld.databinding.ActivityAnimeInfoBinding
 import com.example.animeworld.models.Anime
 import com.example.animeworld.viewmodels.AnimeViewModel
+import java.lang.Integer.min
 
 class AnimeInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAnimeInfoBinding
@@ -63,17 +69,35 @@ class AnimeInfoActivity : AppCompatActivity() {
             animeType.text = "Type: ${anime.type}"
             animeStatus.text = "Status: ${anime.status}"
 
-            var tags = ""
             val tagsList = anime.tags
 
-            for (i in 0 until tagsList?.size!!) {
-                tags += "${tagsList[i]}\t\t\t\t\t"
+            // Creating textViews of all the words in tagsList
+            for (i in 0 until min(tagsList?.size!!, 10)) {
+                val textView = TextView(this@AnimeInfoActivity)
+                val tagName = tagsList[i].toString()
 
-                if (i == 10)
-                    break
+                textView.apply {
+                    this.textSize = 16f
+                    text = tagName
+                    setTextColor(Color.parseColor("#F44336"))
+                    foreground = ContextCompat.getDrawable(
+                        this@AnimeInfoActivity,
+                        R.drawable.anime_tags_background
+                    )
+                    setPadding(25, 12, 25, 15)
+
+                    // To handle clicking on tags
+                    setOnClickListener {
+                        val intent = Intent(this@AnimeInfoActivity, SearchResultsActivity::class.java)
+                            .putExtra("query text", tagName)
+
+                        startActivity(intent)
+                    }
+                }
+
+                binding.animeTagsLayout.addView(textView)
             }
 
-            animeTags.text = tags
         }
 
         Glide.with(this).load(anime.picture).into(binding.animeImage)
@@ -85,14 +109,15 @@ class AnimeInfoActivity : AppCompatActivity() {
     private fun showFloatingButtons() {
         val activityName = intent.getStringExtra("activity name")
 
-        if (activityName?.contains("MainScreenActivity") == true) {
+        if (activityName?.contains("MainScreenActivity") == true ||
+            activityName?.contains("SearchResultsActivity") == true ||
+            activityName?.contains("CategorizedAnimeActivity") == true
+        ) {
             binding.removeButton.visibility = View.GONE
-        }
-        else {
+        } else {
             if (activityName?.contains("WatchListActivity") == true) {
                 binding.addToWatchList.visibility = View.GONE
-            }
-            else if (activityName?.contains("FavouritesActivity") == true) {
+            } else if (activityName?.contains("FavouritesActivity") == true) {
                 binding.addToFavourites.visibility = View.GONE
             }
 

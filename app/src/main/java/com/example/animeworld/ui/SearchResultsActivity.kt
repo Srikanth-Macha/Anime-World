@@ -19,6 +19,7 @@ class SearchResultsActivity : AppCompatActivity() {
         binding = ActivitySearchResultsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // TODO Implement search using Tags
         val queryText = intent.getStringExtra("query text")?.trim()
 
         supportActionBar?.apply {

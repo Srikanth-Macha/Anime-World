@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:nestedScrollingEnabled="false"
+    tools:ignore="HardcodedText"
     tools:context=".ui.AnimeInfoActivity">
 
     <ScrollView
@@ -132,27 +133,48 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/animeTags"
-                android:layout_width="wrap_content"
+            <com.nex3z.flowlayout.FlowLayout
+                android:id="@+id/animeTagsLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:gravity="center_horizontal"
-                android:text="Action    Arcade   Thriller"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="3dp"
+                app:flChildSpacing="8dp"
+                app:flRowSpacing="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tagsLayout" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tags: "
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="-4dp"
+                    android:textAlignment="viewStart"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+            </com.nex3z.flowlayout.FlowLayout>
+
+            <TextView
+                android:id="@+id/descriptionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:foreground="@drawable/text_background_stroke"
+                android:text="Description"
                 android:textAlignment="center"
-                android:textColor="?colorPrimary"
-                android:textSize="18sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tagsLayout" />
+                app:layout_constraintTop_toBottomOf="@id/animeTagsLayout" />
 
             <TextView
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:paddingHorizontal="5dp"
                 android:text="Anime Description"
@@ -160,13 +182,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/animeTags" />
+                app:layout_constraintTop_toBottomOf="@id/descriptionTitle" />
 
             <TextView
                 android:id="@+id/sources"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:foreground="@drawable/text_background_stroke"
                 android:text="Sources"
                 android:textAlignment="center"
@@ -182,7 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:paddingStart="30dp"
+                android:paddingStart="28dp"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/sources" />
