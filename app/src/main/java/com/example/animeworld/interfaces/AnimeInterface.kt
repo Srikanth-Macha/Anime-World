@@ -46,6 +46,12 @@ object AnimeInterface {
         return favouritesResponse.body()
     }
 
+    suspend fun findAnimeByTag(animeTag: String): List<Anime>? {
+        val animeTagResponse = retrofitAnimeInterface.findAnimeByTag(animeTag)
+
+        return animeTagResponse.body()
+    }
+
     suspend fun addToWatchList(requestAnime: Anime): Anime? {
         val postAnimeResponse = retrofitAnimeInterface.addToWatchList(requestAnime)
 

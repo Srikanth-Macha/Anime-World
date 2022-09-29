@@ -72,12 +72,12 @@ class AnimeInfoActivity : AppCompatActivity() {
             val tagsList = anime.tags
 
             // Creating textViews of all the words in tagsList
-            for (i in 0 until min(tagsList?.size!!, 10)) {
+            for (i in 0 until min(tagsList?.size!!, 20)) {
                 val textView = TextView(this@AnimeInfoActivity)
                 val tagName = tagsList[i].toString()
 
                 textView.apply {
-                    this.textSize = 16f
+                    this.textSize = 15f
                     text = tagName
                     setTextColor(Color.parseColor("#F44336"))
                     foreground = ContextCompat.getDrawable(
@@ -88,8 +88,9 @@ class AnimeInfoActivity : AppCompatActivity() {
 
                     // To handle clicking on tags
                     setOnClickListener {
-                        val intent = Intent(this@AnimeInfoActivity, SearchResultsActivity::class.java)
-                            .putExtra("query text", tagName)
+                        val intent =
+                            Intent(this@AnimeInfoActivity, SearchResultsActivity::class.java)
+                                .putExtra("query text", "tag:${tagName}")
 
                         startActivity(intent)
                     }

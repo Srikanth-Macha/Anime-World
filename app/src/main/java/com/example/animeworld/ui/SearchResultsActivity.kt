@@ -20,7 +20,8 @@ class SearchResultsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // TODO Implement search using Tags
-        val queryText = intent.getStringExtra("query text")?.trim()
+        val queryText =
+            intent.getStringExtra("query text")?.trim() ?: "" // If null replace with empty string
 
         supportActionBar?.apply {
             title = queryText
@@ -28,7 +29,12 @@ class SearchResultsActivity : AppCompatActivity() {
         }
 
         val viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
-        val searchAnimeLiveData = viewModel.searchAnime(queryText!!)
+
+        val searchAnimeLiveData = if (queryText.startsWith("tag:")) {
+            viewModel.findAnimeByTag(queryText.substring(4))
+        } else {
+            viewModel.searchAnime(queryText)
+        }
 
         searchAnimeLiveData.observe(this) { searchedAnimeList ->
             if (searchedAnimeList.isEmpty()) {

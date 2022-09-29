@@ -100,6 +100,20 @@ class AnimeViewModel : ViewModel() {
         return favouritesLiveData
     }
 
+    fun findAnimeByTag(animeTag: String): LiveData<List<Anime>> {
+        val animeTagLiveData = MutableLiveData<List<Anime>>()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val animeTagSearch = animeInterface.findAnimeByTag(animeTag)
+
+            withContext(Dispatchers.Main) {
+                animeTagLiveData.value = animeTagSearch
+            }
+        }
+
+        return animeTagLiveData
+    }
+
     fun addAnimeToWatchList(requestAnime: Anime): LiveData<Anime> {
         val postAnimeLiveData = MutableLiveData<Anime>()
 
@@ -128,7 +142,7 @@ class AnimeViewModel : ViewModel() {
         return postAnimeLiveData
     }
 
-    fun loginUser(user: User): LiveData<User?> {
+    fun loginUser(user: User): LiveData<User> {
         val userLiveData = MutableLiveData<User>()
 
         viewModelScope.launch(Dispatchers.IO) {

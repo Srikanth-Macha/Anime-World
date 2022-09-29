@@ -170,6 +170,9 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 item.isCheckable = false
                 return false
             }
+            "home" -> {
+                binding.drawerLayout.close()
+            }
             "sign out" -> {
                 signOut()
                 return true

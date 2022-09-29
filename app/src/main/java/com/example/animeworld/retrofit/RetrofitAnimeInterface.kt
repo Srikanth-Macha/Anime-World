@@ -9,6 +9,9 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface RetrofitAnimeInterface {
+
+    // GET requests . . .
+
     @GET("/getPageData")
     suspend fun getAnimeData(@Query("page_number") pageNumber: Number): Response<List<Anime>>
 
@@ -30,7 +33,10 @@ interface RetrofitAnimeInterface {
     @GET("/getFavouritesData")
     suspend fun getFavourites(@Query("email") email: String): Response<List<Anime>>
 
+    @GET("/findAnimeByTag")
+    suspend fun findAnimeByTag(@Query("anime_tag") animeTag: String): Response<List<Anime>>
 
+    // POST requests . . .
     @POST("/addToWatchList")
     suspend fun addToWatchList(@Body requestAnime: Anime): Response<Anime>
 
