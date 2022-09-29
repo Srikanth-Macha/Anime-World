@@ -8,13 +8,12 @@
 
     <TextView
         android:id="@+id/watchListText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/comfortaa"
-        android:text="My Watch List"
-        android:textSize="38sp"
+        android:paddingStart="10dp"
+        android:text="My WatchList"
+        android:foreground="@drawable/text_background_stroke"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
