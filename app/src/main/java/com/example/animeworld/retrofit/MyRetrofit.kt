@@ -8,8 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object MyRetrofit {
-    private const val API_URL = "http://192.168.190.187:3000/"
-//        "https://anime-backend-naj1.onrender.com"
+    private const val API_URL = /*"http://192.168.190.187:3000/"*/
+        "https://anime-backend-naj1.onrender.com"
 
     fun getInstance(): Retrofit {
         return Retrofit.Builder()
