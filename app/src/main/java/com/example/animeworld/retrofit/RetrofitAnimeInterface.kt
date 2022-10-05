@@ -3,10 +3,7 @@ package com.example.animeworld.retrofit
 import com.example.animeworld.models.Anime
 import com.example.animeworld.models.User
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface RetrofitAnimeInterface {
 
@@ -45,4 +42,17 @@ interface RetrofitAnimeInterface {
 
     @POST("/addUser")
     suspend fun loginUser(@Body user: User): Response<User?>
+
+    // DELETE requests . . .
+    @DELETE("/removeFromWatchList")
+    suspend fun removeFromWatchList(
+        @Query("anime_name") animeName: String,
+        @Query("email") email: String,
+    )
+
+    @DELETE("/removeFromFavourites")
+    suspend fun removeFromFavourites(
+        @Query("anime_name") animeName: String,
+        @Query("email") email: String,
+    )
 }

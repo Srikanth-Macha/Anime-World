@@ -69,4 +69,12 @@ object AnimeInterface {
 
         return userResponse.body()
     }
+
+    suspend fun removeFromWatchList(animeName: String, email: String) {
+        retrofitAnimeInterface.removeFromWatchList(animeName, email)
+    }
+
+    suspend fun removeFromFavourites(animeName: String, email: String) {
+        retrofitAnimeInterface.removeFromFavourites(animeName, email)
+    }
 }

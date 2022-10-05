@@ -23,6 +23,8 @@ import java.lang.Integer.min
 
 class AnimeInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAnimeInfoBinding
+    private lateinit var viewModel: AnimeViewModel
+    private var activityName: String? = null
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,14 +33,14 @@ class AnimeInfoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        activityName = intent.getStringExtra("activity name")
         disableBackgroundInteraction() // when progress bar is loading
 
         val anime: Anime = intent.getSerializableExtra("anime info") as Anime
 
         showFloatingButtons() // Show floating button according to previous intent
 
-        val viewModel: AnimeViewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
+        viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
         val malScraperLiveData = viewModel.getDataFromMalScraper(anime.title.toString())
 
         malScraperLiveData.observe(this) { animeResponse ->
@@ -103,13 +105,39 @@ class AnimeInfoActivity : AppCompatActivity() {
 
         Glide.with(this).load(anime.picture).into(binding.animeImage)
 
-        addAnimeToWatchList(viewModel, anime)
-        addAnimeToFavourites(viewModel, anime)
+        addAnimeToWatchList(anime)
+        addAnimeToFavourites(anime)
+
+        removeAnime(anime)
+    }
+
+    private fun removeAnime(anime: Anime) {
+        binding.removeButton.setOnClickListener {
+            if(activityName?.contains("WatchListActivity") == true){
+                viewModel.removeFromWatchList(anime.title!!, anime.userEmail!!)
+
+                Toast.makeText(
+                    this@AnimeInfoActivity,
+                    "Removed ${anime.title} from watchlist",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } else {
+                viewModel.removeFromFavourites(anime.title!!, anime.userEmail!!)
+
+                Toast.makeText(
+                    this@AnimeInfoActivity,
+                    "Removed ${anime.title} from favourites",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            startActivity(Intent(this@AnimeInfoActivity, MainScreenActivity::class.java))
+            finishAffinity()
+        }
     }
 
     private fun showFloatingButtons() {
-        val activityName = intent.getStringExtra("activity name")
-
         if (activityName?.contains("MainScreenActivity") == true ||
             activityName?.contains("SearchResultsActivity") == true ||
             activityName?.contains("CategorizedAnimeActivity") == true
@@ -121,14 +149,10 @@ class AnimeInfoActivity : AppCompatActivity() {
             } else if (activityName?.contains("FavouritesActivity") == true) {
                 binding.addToFavourites.visibility = View.GONE
             }
-
-            binding.removeButton.setOnClickListener {
-                Toast.makeText(this@AnimeInfoActivity, "remove", Toast.LENGTH_SHORT).show()
-            }
         }
     }
 
-    private fun addAnimeToWatchList(viewModel: AnimeViewModel, anime: Anime) {
+    private fun addAnimeToWatchList(anime: Anime) {
         binding.addToWatchList.setOnClickListener {
             val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
             anime.userEmail = preferences.getString("Email", null)
@@ -147,7 +171,7 @@ class AnimeInfoActivity : AppCompatActivity() {
         }
     }
 
-    private fun addAnimeToFavourites(viewModel: AnimeViewModel, anime: Anime) {
+    private fun addAnimeToFavourites(anime: Anime) {
         binding.addToFavourites.setOnClickListener {
             val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
             anime.userEmail = preferences.getString("Email", null)

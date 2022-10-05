@@ -155,4 +155,16 @@ class AnimeViewModel : ViewModel() {
 
         return userLiveData
     }
+
+    fun removeFromWatchList(animeName: String, email: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            animeInterface.removeFromWatchList(animeName, email)
+        }
+    }
+
+    fun removeFromFavourites(animeName: String, email: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            animeInterface.removeFromFavourites(animeName, email)
+        }
+    }
 }
