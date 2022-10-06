@@ -3,14 +3,17 @@ package com.example.animeworld.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.animeworld.R
 import com.example.animeworld.databinding.ActivitySplashScreenBinding
 
+@Suppress("DEPRECATION")
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
     companion object {
@@ -18,13 +21,15 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivitySplashScreenBinding
+    private var isConnected = false // is device connected to internet?
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setAnimation()
+        setAnimation() // To set opening
+        checkInternetConnection()
 
         val preferences = getSharedPreferences("User", Context.MODE_PRIVATE)
         val userEmail = preferences.getString("Email", "default")
@@ -37,6 +42,17 @@ class SplashScreenActivity : AppCompatActivity() {
         } else {
             moveToNextScreen(Intent(this, LoginActivity::class.java))
         }
+    }
+
+    private fun checkInternetConnection() {
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        val wifiInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+        val mobileDataInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
+
+        isConnected = (wifiInfo != null && wifiInfo.isConnectedOrConnecting) ||
+                (mobileDataInfo != null && mobileDataInfo.isConnectedOrConnecting)
     }
 
     private fun setAnimation() {
@@ -61,9 +77,26 @@ class SplashScreenActivity : AppCompatActivity() {
         actionBar?.hide()
         supportActionBar?.hide()
 
-        Handler().postDelayed({
-            startActivity(intent)
-            finish()
-        }, 1200)
+        if (isConnected) {
+            Handler().postDelayed({
+                startActivity(intent)
+                finish()
+            }, 1200)
+        } else {
+            showDialogBox()
+        }
+    }
+
+    private fun showDialogBox() {
+        if (!isConnected) {
+            AlertDialog.Builder(this)
+                .setTitle("No Internet Connection")
+                .setMessage("\nPlease check your internet connection before exploring further")
+                .setCancelable(false)
+                .setPositiveButton("OK") { _, _ ->
+                    finish()
+                }
+                .show()
+        }
     }
 }
