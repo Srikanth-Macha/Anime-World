@@ -10,7 +10,7 @@
     tools:ignore="HardcodedText">
 
     <ScrollView
-        android:id="@id/scrollView"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -228,7 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="?colorPrimary"
+            android:backgroundTint="?android:colorPrimary"
             android:contentDescription="Add Anime to Watchlist"
             android:elevation="10dp"
             android:src="@drawable/ic_round_add_24" />
@@ -239,7 +239,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="?colorPrimary"
+            android:backgroundTint="?android:colorPrimary"
             android:contentDescription="Add Anime to Watchlist"
             android:elevation="10dp"
             android:longClickable="true"
@@ -251,7 +251,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="?colorPrimary"
+            android:backgroundTint="?android:colorPrimary"
             android:contentDescription="Add Anime to Watchlist"
             android:elevation="10dp"
             android:src="@drawable/ic_round_delete_outline_24" />
@@ -275,7 +275,7 @@
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintHeight_percent="0.15"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:lottie_autoPlay="true"

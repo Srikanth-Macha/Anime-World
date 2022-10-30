@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "814768465893",
+    "project_id": "anime-world-80254",
+    "storage_bucket": "anime-world-80254.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814768465893:android:6b3523d088a40b7d0df10c",
+        "android_client_info": {
+          "package_name": "com.example.animeworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814768465893-8ur9docb72o8u6tgsgc4i741i4r2ialr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnAQRY4z97B4B2OqCHw_0tVN1M-agMM20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814768465893-8ur9docb72o8u6tgsgc4i741i4r2ialr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

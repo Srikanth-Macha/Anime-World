@@ -12,8 +12,7 @@ import com.example.animeworld.models.Anime
 import com.example.animeworld.viewmodels.AnimeViewModel
 
 class CategorizedAnimeActivity : AppCompatActivity() {
-    lateinit var binding: ActivityCategorizedAnimeBinding
-
+    private lateinit var binding: ActivityCategorizedAnimeBinding
     private var currentPage: Number = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {

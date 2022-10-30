@@ -6,12 +6,14 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.animeworld.R
 import com.example.animeworld.databinding.ActivitySplashScreenBinding
+import com.google.firebase.messaging.FirebaseMessaging
 
 @Suppress("DEPRECATION")
 @SuppressLint("CustomSplashScreen")
@@ -27,6 +29,14 @@ class SplashScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        FirebaseMessaging.getInstance().token
+            .addOnSuccessListener {
+            Log.d("FromSplashScreen", it)
+        }
+            .addOnFailureListener {
+            Log.e("FromSplashScreen", it.message!!)
+        }
 
         setAnimation() // To set opening
         checkInternetConnection()

@@ -17,6 +17,14 @@
         android:theme="@style/Theme.AnimeWorld"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <service
+            android:name=".notifications.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".ui.FavouritesActivity"
             android:exported="false" />
