@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.animeworld.R
 import com.example.animeworld.adapters.AnimeSourcesAdapter
+import com.example.animeworld.adapters.SimilarAnimeAdapter
 import com.example.animeworld.databinding.ActivityAnimeInfoBinding
 import com.example.animeworld.models.Anime
 import com.example.animeworld.viewmodels.AnimeViewModel
@@ -37,12 +39,14 @@ class AnimeInfoActivity : AppCompatActivity() {
         disableBackgroundInteraction() // when progress bar is loading
 
         val anime: Anime = intent.getSerializableExtra("anime info") as Anime
+        viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
 
         showFloatingButtons() // Show floating button according to previous intent
+        val animeTags: List<String> = listOf(anime.tags?.get(0) ?: "", anime.tags?.get(1) ?: "")
 
-        viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
+        getSimilarAnimeList(animeTags) // To get list of similar anime
+
         val malScraperLiveData = viewModel.getDataFromMalScraper(anime.title.toString())
-
         malScraperLiveData.observe(this) { animeResponse ->
             if (animeResponse.score == null && animeResponse.description == null) {
                 anime.apply {
@@ -76,7 +80,7 @@ class AnimeInfoActivity : AppCompatActivity() {
             // Creating textViews of all the words in tagsList
             for (i in 0 until min(tagsList?.size!!, 20)) {
                 val textView = TextView(this@AnimeInfoActivity)
-                val tagName = tagsList[i].toString()
+                val tagName = tagsList[i]
 
                 textView.apply {
                     this.textSize = 15f
@@ -111,9 +115,28 @@ class AnimeInfoActivity : AppCompatActivity() {
         removeAnime(anime)
     }
 
+    private fun getSimilarAnimeList(animeTags: List<String>?) {
+        val similarAnimeLiveData = viewModel.similarAnime(animeTags)
+
+        similarAnimeLiveData.observe(this) {
+            addSimilarAnimeToUI(it)
+            Log.e("getSimilarAnimeList", it.toString())
+            binding.similarAnimeProgressBar.visibility = View.GONE
+        }
+    }
+
+    private fun addSimilarAnimeToUI(similarAnimeList: List<Anime>?) {
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        binding.similarAnimeRecyclerView.apply {
+            adapter = SimilarAnimeAdapter(this@AnimeInfoActivity, similarAnimeList!!)
+            this.layoutManager = layoutManager
+        }
+    }
+
     private fun removeAnime(anime: Anime) {
         binding.removeButton.setOnClickListener {
-            if(activityName?.contains("WatchListActivity") == true){
+            if (activityName?.contains("WatchListActivity") == true) {
                 viewModel.removeFromWatchList(anime.title!!, anime.userEmail!!)
 
                 Toast.makeText(
@@ -140,7 +163,8 @@ class AnimeInfoActivity : AppCompatActivity() {
     private fun showFloatingButtons() {
         if (activityName?.contains("MainScreenActivity") == true ||
             activityName?.contains("SearchResultsActivity") == true ||
-            activityName?.contains("CategorizedAnimeActivity") == true
+            activityName?.contains("CategorizedAnimeActivity") == true ||
+            activityName?.contains("AnimeInfoActivity") == true
         ) {
             binding.removeButton.visibility = View.GONE
         } else {
@@ -163,9 +187,11 @@ class AnimeInfoActivity : AppCompatActivity() {
         }
 
         binding.addToWatchList.setOnLongClickListener {
-            Toast.makeText(this@AnimeInfoActivity,
+            Toast.makeText(
+                this@AnimeInfoActivity,
                 "Add this anime to WatchList",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
 
             return@setOnLongClickListener true
         }
@@ -182,9 +208,11 @@ class AnimeInfoActivity : AppCompatActivity() {
         }
 
         binding.addToFavourites.setOnLongClickListener {
-            Toast.makeText(this@AnimeInfoActivity,
+            Toast.makeText(
+                this@AnimeInfoActivity,
                 "Add this anime to Favourites",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
 
             return@setOnLongClickListener true
         }
@@ -207,8 +235,10 @@ class AnimeInfoActivity : AppCompatActivity() {
     }
 
     private fun disableBackgroundInteraction() {
-        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        )
     }
 
     private fun enableBackgroundInteraction() {

@@ -144,9 +144,11 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
                     startActivity(i)
                 } else {
-                    Toast.makeText(this@MainScreenActivity,
+                    Toast.makeText(
+                        this@MainScreenActivity,
                         "Search field cannot be empty",
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
                 return true

@@ -39,7 +39,8 @@ class FavouritesActivity : AppCompatActivity() {
             favouritesList,
             this@FavouritesActivity,
             layoutManager,
-            this@FavouritesActivity) {
+            this@FavouritesActivity
+        ) {
 
             override fun loadNextPage(page: Int) {}
         }

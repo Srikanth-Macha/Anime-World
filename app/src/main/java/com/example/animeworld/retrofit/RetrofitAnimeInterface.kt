@@ -33,7 +33,12 @@ interface RetrofitAnimeInterface {
     @GET("/findAnimeByTag")
     suspend fun findAnimeByTag(@Query("anime_tag") animeTag: String): Response<List<Anime>>
 
+    @GET("/similarAnime")
+    suspend fun similarAnime(@Query("anime_tags") animeTags: List<String>?): Response<List<Anime>>
+
+
     // POST requests . . .
+
     @POST("/addToWatchList")
     suspend fun addToWatchList(@Body requestAnime: Anime): Response<Anime>
 
@@ -43,7 +48,9 @@ interface RetrofitAnimeInterface {
     @POST("/addUser")
     suspend fun loginUser(@Body user: User): Response<User?>
 
+
     // DELETE requests . . .
+
     @DELETE("/removeFromWatchList")
     suspend fun removeFromWatchList(
         @Query("anime_name") animeName: String,

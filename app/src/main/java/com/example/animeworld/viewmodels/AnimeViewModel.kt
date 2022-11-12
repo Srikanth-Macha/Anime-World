@@ -114,6 +114,20 @@ class AnimeViewModel : ViewModel() {
         return animeTagLiveData
     }
 
+    fun similarAnime(animeTags: List<String>?): LiveData<List<Anime>> {
+        val similarAnimeLiveData = MutableLiveData<List<Anime>>()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val similarAnime = animeInterface.similarAnime(animeTags)
+
+            withContext(Dispatchers.Main) {
+                similarAnimeLiveData.value = similarAnime
+            }
+        }
+
+        return similarAnimeLiveData
+    }
+
     fun addAnimeToWatchList(requestAnime: Anime): LiveData<Anime> {
         val postAnimeLiveData = MutableLiveData<Anime>()
 

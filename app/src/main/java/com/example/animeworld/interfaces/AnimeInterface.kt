@@ -52,6 +52,12 @@ object AnimeInterface {
         return animeTagResponse.body()
     }
 
+    suspend fun similarAnime(animeTags: List<String>?): List<Anime>? {
+        val similarAnimeResponse = retrofitAnimeInterface.similarAnime(animeTags)
+
+        return similarAnimeResponse.body()
+    }
+
     suspend fun addToWatchList(requestAnime: Anime): Anime? {
         val postAnimeResponse = retrofitAnimeInterface.addToWatchList(requestAnime)
 

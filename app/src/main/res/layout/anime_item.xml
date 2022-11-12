@@ -20,7 +20,7 @@
 
         <ImageView
             android:id="@+id/animeImage"
-            android:layout_width="180dp"
+            android:layout_width="170dp"
             android:layout_height="230dp"
             android:contentDescription="Anime Thumbnail"
             android:scaleType="fitXY"
@@ -35,9 +35,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="Anime Name"
+        android:textAlignment="center"
         android:textSize="17sp"
         android:textStyle="bold"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@id/animeCardView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/animeCardView"

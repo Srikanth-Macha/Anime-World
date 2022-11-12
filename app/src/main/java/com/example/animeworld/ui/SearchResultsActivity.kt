@@ -48,10 +48,12 @@ class SearchResultsActivity : AppCompatActivity() {
 
     private fun setRecyclerAdapter(searchedAnimeList: List<Anime>) {
         val layoutManager = GridLayoutManager(this@SearchResultsActivity, 2)
-        val adapter = object : AnimeAdapter(searchedAnimeList,
+        val adapter = object : AnimeAdapter(
+            searchedAnimeList,
             this@SearchResultsActivity,
             layoutManager,
-            this@SearchResultsActivity) {
+            this@SearchResultsActivity
+        ) {
             override fun loadNextPage(page: Int) {}
         }
 

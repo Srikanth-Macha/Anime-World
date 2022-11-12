@@ -32,11 +32,11 @@ class SplashScreenActivity : AppCompatActivity() {
 
         FirebaseMessaging.getInstance().token
             .addOnSuccessListener {
-            Log.d("FromSplashScreen", it)
-        }
+                Log.d("FromSplashScreen", it)
+            }
             .addOnFailureListener {
-            Log.e("FromSplashScreen", it.message!!)
-        }
+                Log.e("FromSplashScreen", it.message!!)
+            }
 
         setAnimation() // To set opening
         checkInternetConnection()

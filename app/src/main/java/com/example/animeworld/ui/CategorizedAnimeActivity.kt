@@ -46,10 +46,12 @@ class CategorizedAnimeActivity : AppCompatActivity() {
         categoryName: String,
     ) {
         val gridLayoutManager = GridLayoutManager(this, 2)
-        val adapter = object : AnimeAdapter(categorizedAnimeList,
+        val adapter = object : AnimeAdapter(
+            categorizedAnimeList,
             this@CategorizedAnimeActivity,
             gridLayoutManager,
-            this@CategorizedAnimeActivity) {
+            this@CategorizedAnimeActivity
+        ) {
 
             @SuppressLint("NotifyDataSetChanged")
             override fun loadNextPage(page: Int) {

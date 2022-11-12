@@ -30,7 +30,7 @@ data class Anime(
     val synonyms: List<String>? = null,
 
     @SerializedName("tags")
-    val tags: List<Any>? = null,
+    var tags: List<String>? = null,
 
     @SerializedName("thumbnail")
     val thumbnail: String? = null,

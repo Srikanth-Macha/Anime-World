@@ -45,7 +45,8 @@ class WatchListActivity : AppCompatActivity() {
             watchList,
             this@WatchListActivity,
             layoutManager,
-            this@WatchListActivity) {
+            this@WatchListActivity
+        ) {
 
             override fun loadNextPage(page: Int) {}
         }
