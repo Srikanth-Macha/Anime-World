@@ -21,6 +21,7 @@ class WatchListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Watch List"
 
         val viewModel = ViewModelProvider(this)[AnimeViewModel::class.java]
         val userEmail = getSharedPreferences("User", Context.MODE_PRIVATE).getString("Email", null)

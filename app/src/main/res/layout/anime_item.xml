@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="20dp"
+        android:backgroundTint="@color/grey"
         android:foregroundGravity="center_horizontal"
         app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@id/animeName"
