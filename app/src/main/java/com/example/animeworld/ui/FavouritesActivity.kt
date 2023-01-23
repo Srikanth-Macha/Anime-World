@@ -20,6 +20,7 @@ class FavouritesActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Favourites"
 
         val userEmail = getSharedPreferences("User", Context.MODE_PRIVATE).getString("Email", null)
 

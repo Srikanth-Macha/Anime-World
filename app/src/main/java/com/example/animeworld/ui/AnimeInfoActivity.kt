@@ -129,7 +129,9 @@ class AnimeInfoActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         binding.similarAnimeRecyclerView.apply {
-            adapter = SimilarAnimeAdapter(this@AnimeInfoActivity, similarAnimeList!!)
+            adapter = SimilarAnimeAdapter(
+                this@AnimeInfoActivity, similarAnimeList ?: emptyList()
+            )
             this.layoutManager = layoutManager
         }
     }
