@@ -3,7 +3,7 @@ package com.example.animeworld.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -85,7 +85,7 @@ class AnimeInfoActivity : AppCompatActivity() {
                 textView.apply {
                     this.textSize = 15f
                     text = tagName
-                    setTextColor(Color.parseColor("#F44336"))
+                    typeface = Typeface.DEFAULT_BOLD
                     foreground = ContextCompat.getDrawable(
                         this@AnimeInfoActivity,
                         R.drawable.anime_tags_background

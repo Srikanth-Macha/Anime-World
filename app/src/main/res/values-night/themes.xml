@@ -10,12 +10,13 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">#171717</item>
         <!-- Customize your theme here. -->
 
         <item name="android:textColor">@color/white</item>
         <item name="android:backgroundTint">#0F0F0F</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="actionBarTheme">@style/ToolbarStyle</item>
     </style>
 
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
@@ -24,4 +25,5 @@
         <item name="android:activityCloseEnterAnimation">@android:anim/fade_in</item>
         <item name="android:activityCloseExitAnimation">@android:anim/fade_out</item>
     </style>
+
 </resources>

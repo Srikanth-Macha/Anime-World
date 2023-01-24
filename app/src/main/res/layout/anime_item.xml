@@ -28,7 +28,7 @@
             android:contentDescription="Anime Thumbnail"
             android:foregroundGravity="center_horizontal"
             android:scaleType="fitXY"
-            android:src="@color/black"
+            android:src="@color/grey"
             tools:ignore="HardcodedText" />
 
     </androidx.cardview.widget.CardView>
