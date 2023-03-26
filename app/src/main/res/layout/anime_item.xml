@@ -22,8 +22,8 @@
 
         <ImageView
             android:id="@+id/animeImage"
-            android:layout_width="170dp"
-            android:layout_height="230dp"
+            android:layout_width="@dimen/_135sdp"
+            android:layout_height="@dimen/_183sdp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="Anime Thumbnail"
             android:foregroundGravity="center_horizontal"

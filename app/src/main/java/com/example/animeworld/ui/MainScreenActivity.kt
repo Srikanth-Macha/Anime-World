@@ -47,7 +47,6 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         val animeLiveData = viewModel.showAnimePageData(currentPage)
 
         animeLiveData.observe(this) { animeList ->
-            Log.w("AnimeList Response", animeList.toString())
             setRecyclerAdapter(animeList as MutableList<Anime>)
         }
 
@@ -185,6 +184,10 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             "favourites" -> {
                 startActivity(Intent(this@MainScreenActivity, FavouritesActivity::class.java))
             }
+            "random anime" -> {
+                // To show any random anime
+                getRandomAnime()
+            }
             else -> {
                 val intent =
                     Intent(this@MainScreenActivity, CategorizedAnimeActivity::class.java).apply {
@@ -196,6 +199,19 @@ class MainScreenActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         }
 
         return true
+    }
+
+    private fun getRandomAnime() {
+        val randomLiveData = viewModel.getRandomAnime()
+
+        randomLiveData.observe(this) { anime ->
+            startActivity(
+                Intent(this@MainScreenActivity, AnimeInfoActivity::class.java).apply {
+                    putExtra("anime info", anime)
+                    putExtra("activity name", this@MainScreenActivity.javaClass.name)
+                }
+            )
+        }
     }
 
     private fun signOut() {

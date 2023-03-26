@@ -36,6 +36,8 @@ interface RetrofitAnimeInterface {
     @GET("/similarAnime")
     suspend fun similarAnime(@Query("anime_tags") animeTags: List<String>?): Response<List<Anime>>
 
+    @GET("/random")
+    suspend fun getRandomAnime(): Response<Anime>
 
     // POST requests . . .
 

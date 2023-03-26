@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 object MyRetrofit {
     private const val API_URL = /*"http://:3000/"*/
-        "https://anime-backend-naj1.onrender.com"
+        "https://anime-backend-docker.onrender.com"
 
     fun getInstance(): Retrofit {
         return Retrofit.Builder()

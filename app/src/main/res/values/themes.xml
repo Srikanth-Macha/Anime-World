@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.AnimeWorld" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -10,12 +10,18 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">#232323</item>
         <!-- Customize your theme here. -->
 
         <item name="android:textColor">@color/black</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="actionBarTheme">@style/Theme.Material3.Light</item>
+    </style>
 
+    <style name="NavigationViewStyle" parent="Theme.Material3.Light" />
+
+    <style name="FabStyle" parent="Theme.Material3.Light">
+        <item name="android:backgroundTint">?colorPrimary</item>
     </style>
 
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">

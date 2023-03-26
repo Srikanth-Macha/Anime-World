@@ -83,4 +83,10 @@ object AnimeInterface {
     suspend fun removeFromFavourites(animeName: String, email: String) {
         retrofitAnimeInterface.removeFromFavourites(animeName, email)
     }
+
+    suspend fun getRandomAnime(): Anime? {
+        val randomResponse = retrofitAnimeInterface.getRandomAnime()
+
+        return randomResponse.body()
+    }
 }

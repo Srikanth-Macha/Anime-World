@@ -12,13 +12,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AnimeViewModel : ViewModel() {
-    private val animeInterface = AnimeInterface
-
     fun showAnimePageData(pageNumber: Int): LiveData<List<Anime>> {
         val animeLiveData = MutableLiveData<List<Anime>>()
 
         viewModelScope.launch {
-            val list = animeInterface.getAnimeData(pageNumber)
+            val list = AnimeInterface.getAnimeData(pageNumber)
 
             withContext(Dispatchers.Main) {
                 animeLiveData.value = list
@@ -33,7 +31,7 @@ class AnimeViewModel : ViewModel() {
         val animeSearchLiveData = MutableLiveData<List<Anime>>()
 
         viewModelScope.launch {
-            val searchedAnime = animeInterface.searchAnimeByName(animeName)
+            val searchedAnime = AnimeInterface.searchAnimeByName(animeName)
 
             withContext(Dispatchers.Main) {
                 animeSearchLiveData.value = searchedAnime
@@ -48,7 +46,7 @@ class AnimeViewModel : ViewModel() {
 
         viewModelScope.launch(Dispatchers.IO) {
             val categorizedAnimeList =
-                animeInterface.getAnimeByCategory(categoryName.lowercase().trim(), pageNumber)
+                AnimeInterface.getAnimeByCategory(categoryName.lowercase().trim(), pageNumber)
 
             withContext(Dispatchers.Main) {
                 categorizedAnimeLiveData.value = categorizedAnimeList
@@ -62,7 +60,7 @@ class AnimeViewModel : ViewModel() {
         val malScraperLiveData = MutableLiveData<Anime>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val malScraperData = animeInterface.getFromMalScraper(animeName)
+            val malScraperData = AnimeInterface.getFromMalScraper(animeName)
 
             withContext(Dispatchers.Main) {
                 malScraperLiveData.value = malScraperData
@@ -76,7 +74,7 @@ class AnimeViewModel : ViewModel() {
         val watchListLiveData = MutableLiveData<List<Anime>>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val watchList = animeInterface.getWatchList(email.toString())
+            val watchList = AnimeInterface.getWatchList(email.toString())
 
             withContext(Dispatchers.Main) {
                 watchListLiveData.value = watchList
@@ -90,7 +88,7 @@ class AnimeViewModel : ViewModel() {
         val favouritesLiveData = MutableLiveData<List<Anime>>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val favourites = animeInterface.getFavourites(email)
+            val favourites = AnimeInterface.getFavourites(email)
 
             withContext(Dispatchers.Main) {
                 favouritesLiveData.value = favourites
@@ -104,7 +102,7 @@ class AnimeViewModel : ViewModel() {
         val animeTagLiveData = MutableLiveData<List<Anime>>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val animeTagSearch = animeInterface.findAnimeByTag(animeTag)
+            val animeTagSearch = AnimeInterface.findAnimeByTag(animeTag)
 
             withContext(Dispatchers.Main) {
                 animeTagLiveData.value = animeTagSearch
@@ -118,7 +116,7 @@ class AnimeViewModel : ViewModel() {
         val similarAnimeLiveData = MutableLiveData<List<Anime>>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val similarAnime = animeInterface.similarAnime(animeTags)
+            val similarAnime = AnimeInterface.similarAnime(animeTags)
 
             withContext(Dispatchers.Main) {
                 similarAnimeLiveData.value = similarAnime
@@ -132,7 +130,7 @@ class AnimeViewModel : ViewModel() {
         val postAnimeLiveData = MutableLiveData<Anime>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val watchListData = animeInterface.addToWatchList(requestAnime)
+            val watchListData = AnimeInterface.addToWatchList(requestAnime)
 
             withContext(Dispatchers.Main) {
                 postAnimeLiveData.value = watchListData
@@ -146,7 +144,7 @@ class AnimeViewModel : ViewModel() {
         val postAnimeLiveData = MutableLiveData<Anime>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val watchListData = animeInterface.addToFavourites(requestAnime)
+            val watchListData = AnimeInterface.addToFavourites(requestAnime)
 
             withContext(Dispatchers.Main) {
                 postAnimeLiveData.value = watchListData
@@ -160,7 +158,7 @@ class AnimeViewModel : ViewModel() {
         val userLiveData = MutableLiveData<User>()
 
         viewModelScope.launch(Dispatchers.IO) {
-            val userResponse = animeInterface.loginUser(user)
+            val userResponse = AnimeInterface.loginUser(user)
 
             withContext(Dispatchers.Main) {
                 userLiveData.value = userResponse
@@ -172,13 +170,27 @@ class AnimeViewModel : ViewModel() {
 
     fun removeFromWatchList(animeName: String, email: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            animeInterface.removeFromWatchList(animeName, email)
+            AnimeInterface.removeFromWatchList(animeName, email)
         }
     }
 
     fun removeFromFavourites(animeName: String, email: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            animeInterface.removeFromFavourites(animeName, email)
+            AnimeInterface.removeFromFavourites(animeName, email)
         }
+    }
+
+    fun getRandomAnime(): LiveData<Anime> {
+        val liveData = MutableLiveData<Anime>()
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val data = AnimeInterface.getRandomAnime()
+
+            withContext(Dispatchers.Main) {
+                liveData.value = data
+            }
+        }
+
+        return liveData
     }
 }

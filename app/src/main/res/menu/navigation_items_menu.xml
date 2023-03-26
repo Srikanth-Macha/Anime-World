@@ -11,6 +11,11 @@
         android:icon="@drawable/ic_round_favorite_border_24"
         android:title="Favourites" />
 
+    <item
+        android:id="@+id/random"
+        android:icon="@drawable/ic_round_play_arrow_24"
+        android:title="Random Anime" />
+
     <group
         android:id="@+id/categoriesList"
         android:menuCategory="container">
