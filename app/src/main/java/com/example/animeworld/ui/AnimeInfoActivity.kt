@@ -86,7 +86,7 @@ class AnimeInfoActivity : AppCompatActivity() {
                 textView.apply {
                     this.textSize = 13f
                     text = tagName
-                    setTextColor(Color.parseColor("#F44336"))
+                    setTextColor(Color.parseColor("#C63E34"))
                     typeface = Typeface.DEFAULT_BOLD
                     foreground = ContextCompat.getDrawable(
                         this@AnimeInfoActivity,

@@ -11,7 +11,7 @@
         android:autoLink="web"
         android:clickable="true"
         android:text="Anime Source Link"
-        android:textColorLink="#2196F3"
+        android:textColorLink="#2F82C3"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
